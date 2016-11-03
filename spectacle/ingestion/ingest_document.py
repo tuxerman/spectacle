@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
-Batch to read a JSON file containing all information about a document, and ingest the document into the system
+Batch to read a JSON file containing all information about a document
+and ingest the document into the system
 """
 
 from __future__ import print_function

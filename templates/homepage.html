@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Spectacle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/searcher.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/modules/popular.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+        Searcher.init();
+        // PopularTopics.init();
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class=navbar>
+    <div class="container">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 5%">
+        <div class="logo" onclick="location.href='/';"> <h2>Spectacle</h2> </div>
+        <p>Lorem ipsum dolores umbridge</p>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="two-thirds column">
+        <input class="u-full-width" type="text" placeholder="" id="search_string">
+      </div>
+      <div class="one-third column">
+        <button class="button-primary" id="search_button">Search</button>
+      </div>
+    </div>
+
+    <div id="search_results_panel" class="row" hidden>
+      <div class="twelve columns" style="margin-top: 5%">
+        <h4>Search Results</h4>
+      </div>
+      <div id="search_results" class="twelve columns">
+      </div>
+    </div>
+
+<!--     <div class="row">
+      <div class="twelve columns" style="margin-top: 5%">
+        <h4>Popular topics</h4>
+      </div>
+      <div id="popular_topics" class="twelve columns" style="margin-top: 5%">
+      </div>
+    </div> -->
+    
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

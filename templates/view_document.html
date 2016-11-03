@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Spectacle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/documentview.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+        DocumentViewer.init();
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 5%">
+        <div class="logo" onclick="location.href='/';"> <h2>Spectacle</h2> </div>
+        <h3> {{document_data.title}} </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns" style="margin-top: 5%">
+        <h4>Content</h4>
+        <p> {{document_data.content}} </p>
+        <h4>Document</h4>
+        <object data="/pdf_document/pdf_1.pdf" type="application/pdf" width="100%" height="700">
+          <iframe src="/pdf_document/pdf_1.pdf" width="100%" height="700" style="border: none;">
+            This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf_document/pdf_1.pdf">Download PDF</a>
+          </iframe>
+        </object>
+      </div>
+      <div class="four columns" style="margin-top: 5%">
+        <h4>Meta</h4>
+        <h5>Source</h5>
+        <p> {{document_data.source}} </p>
+        <h5>Original</h5>
+        <a href="{{ document_data.original_url }}">Click here</a>
+      </div>
+    </div>
+    
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

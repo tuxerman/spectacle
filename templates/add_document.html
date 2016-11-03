@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Spectacle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/new_doc_adder.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+        NewDocAdder.init();
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 5%">
+        <div class="logo" onclick="location.href='/';"> <h2>Spectacle</h2> </div>
+        <p>Add New Document</p>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="eight columns"style="margin-top: 1rem">
+        <label for="form_title">Title</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_title">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="eight columns"style="margin-top: 1rem">
+        <label for="form_content">Content</label>
+        <textarea class="u-full-width" placeholder="" id="form_content"></textarea>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="eight columns"style="margin-top: 1rem">
+        <label for="form_topic_id">Topic ID</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_topic_id">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="eight columns"style="margin-top: 1rem">
+        <label for="form_original_url">Original URL</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_original_url">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="eight columns"style="margin-top: 1rem">
+        <label for="form_source">Source</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_source">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="three columns"style="margin-top: 1rem">
+        <button class="button-primary" id="submit_button">Submit</button>
+      </div>
+    </div>
+
+    </div>
+    
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
