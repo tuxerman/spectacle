@@ -1,0 +1,1833 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ad",
+				"add_document"
+			],
+			[
+				"title",
+				"titleBox"
+			],
+			[
+				"sear",
+				"search_string	statement"
+			],
+			[
+				"FTS",
+				"FTSEntry	class"
+			],
+			[
+				"doc",
+				"document_data	module"
+			],
+			[
+				"data",
+				"data_layer	module"
+			],
+			[
+				"Inter",
+				"IntegerField"
+			],
+			[
+				"res",
+				"result_data	statement"
+			],
+			[
+				"ren",
+				"render_template	function"
+			],
+			[
+				"Sear",
+				"Searcher"
+			],
+			[
+				"pop",
+				"popular"
+			],
+			[
+				"popu",
+				"popularTopics"
+			],
+			[
+				"get",
+				"getPopularTopics"
+			],
+			[
+				"va",
+				"val"
+			],
+			[
+				"assert",
+				"assert_called_once_with"
+			],
+			[
+				"parent",
+				"parent_entity_id	statement"
+			],
+			[
+				"oxf",
+				"oxford_gb	statement"
+			],
+			[
+				"fac",
+				"facts"
+			],
+			[
+				"resut",
+				"results	param"
+			],
+			[
+				"_all",
+				"_canonical_name_result_filter"
+			],
+			[
+				"matched",
+				"matched_entities	statement"
+			],
+			[
+				"include",
+				"include_non_canonical_name_matches	param"
+			],
+			[
+				"entit",
+				"entity_tree"
+			],
+			[
+				"inclu",
+				"include_non_canonical_name_matches	param"
+			],
+			[
+				"search",
+				"_search"
+			],
+			[
+				"matche",
+				"matched_entities	statement"
+			],
+			[
+				"ent",
+				"entity	param"
+			],
+			[
+				"ance",
+				"get_ancestry"
+			],
+			[
+				"incl",
+				"include_full_name"
+			],
+			[
+				"get_f",
+				"get_fully_qualified_name"
+			],
+			[
+				"D",
+				"DataInconsistencyError	class"
+			],
+			[
+				"vali",
+				"valid"
+			],
+			[
+				"poil",
+				"polygon_coordinates	param"
+			],
+			[
+				"validate",
+				"validate_point	function"
+			],
+			[
+				"valida",
+				"validate_center	function"
+			],
+			[
+				"valid",
+				"valid_geojson	param"
+			],
+			[
+				"center",
+				"center_valid	statement"
+			],
+			[
+				"val",
+				"validate_center	function"
+			],
+			[
+				"geoj",
+				"geojson_utils	module"
+			],
+			[
+				"geo",
+				"geojson_wrongly_ordered_bbox	statement"
+			],
+			[
+				"polygon",
+				"polygon_coordinates	param"
+			],
+			[
+				"Valida",
+				"ValidationError	class"
+			],
+			[
+				"is_va",
+				"is_valid_bbox	statement"
+			],
+			[
+				"cetn",
+				"center_point	statement"
+			],
+			[
+				"is",
+				"is_center_within_bbox	function"
+			],
+			[
+				"class",
+				"classmethod	class"
+			],
+			[
+				"ge",
+				"geojson_blob	param"
+			],
+			[
+				"loca",
+				"locality_tmp_index"
+			],
+			[
+				"MAX",
+				"MAX_LNG_VALUE	statement"
+			],
+			[
+				"MIN",
+				"MIN_LNG_VALUE	statement"
+			],
+			[
+				"max_l",
+				"max_lng	statement"
+			],
+			[
+				"city",
+				"city_id	param"
+			],
+			[
+				"insert",
+				"insert_geometry_fact	function"
+			],
+			[
+				"mergin",
+				"merging_info	forstmt"
+			],
+			[
+				"hood",
+				"hood_id	forstmt"
+			],
+			[
+				"du",
+				"dummy_request	param"
+			],
+			[
+				"dummy",
+				"dummy_context	param"
+			],
+			[
+				"pa",
+				"payload	statement"
+			],
+			[
+				"geome",
+				"geometry_fact_data	param"
+			],
+			[
+				"enti",
+				"entity_type	statement"
+			],
+			[
+				"canon",
+				"canonical_name"
+			],
+			[
+				"post",
+				"post_req	statement"
+			],
+			[
+				"geom",
+				"geometry_fact_data	param"
+			],
+			[
+				"max",
+				"max_lat"
+			],
+			[
+				"hoo",
+				"hood_id	param"
+			],
+			[
+				"delete",
+				"delete_entity	function"
+			],
+			[
+				"fact",
+				"facts	statement"
+			],
+			[
+				"Conf",
+				"ConflictingFactError	class"
+			],
+			[
+				"en",
+				"entity_id"
+			],
+			[
+				"f_hood",
+				"f_hood_grand_parent"
+			],
+			[
+				"edi",
+				"edit_verified_fact"
+			],
+			[
+				"unstr",
+				"unstructured_query	statement"
+			],
+			[
+				"str",
+				"structured_query	statement"
+			],
+			[
+				"q_",
+				"q_city	statement"
+			],
+			[
+				"countr",
+				"country_code	param"
+			],
+			[
+				"print",
+				"print_hood_info	function"
+			],
+			[
+				"cit",
+				"city2_name	statement"
+			],
+			[
+				"city2",
+				"city2_name	statement"
+			],
+			[
+				"city1",
+				"city1_name	statement"
+			],
+			[
+				"search_",
+				"search_entities_by_canonical_name	function"
+			],
+			[
+				"read",
+				"read_bad_cities"
+			],
+			[
+				"remove",
+				"removed_city_indices	statement"
+			],
+			[
+				"near",
+				"near_city_index"
+			],
+			[
+				"remo",
+				"removed_city_indices	statement"
+			],
+			[
+				"city_",
+				"city_index	forstmt"
+			],
+			[
+				"wor",
+				"world_grid_key"
+			],
+			[
+				"biz",
+				"bizcount"
+			],
+			[
+				"Val",
+				"ValueError	class"
+			],
+			[
+				"word",
+				"world_grid_key	statement"
+			],
+			[
+				"lng",
+				"lng_bucket	param"
+			],
+			[
+				"W",
+				"WORLD_10x	statement"
+			],
+			[
+				"re",
+				"reviewcount"
+			],
+			[
+				"near_c",
+				"near_city_index	forstmt"
+			],
+			[
+				"cities",
+				"cities_in_grid	statement"
+			],
+			[
+				"pair",
+				"pair_key	statement"
+			],
+			[
+				"lat",
+				"lat_bucket	statement"
+			],
+			[
+				"windo",
+				"window_width	statement"
+			],
+			[
+				"zipc",
+				"zipcode_id	statement"
+			],
+			[
+				"Fact",
+				"FactType	class"
+			],
+			[
+				"zipco",
+				"zipcode_id	statement"
+			],
+			[
+				"zip",
+				"zipcode_data	statement"
+			],
+			[
+				"Zip",
+				"ZipcodeTableRow	class"
+			],
+			[
+				"all",
+				"all_cities	statement"
+			],
+			[
+				"sorted",
+				"sorted_cities	function"
+			],
+			[
+				"search_b",
+				"search_entities_by_canonical_name	function"
+			],
+			[
+				"search_en",
+				"search_entities_by_canonical_name	function"
+			],
+			[
+				"gl_",
+				"gl_result"
+			],
+			[
+				"from",
+				"from_country	statement"
+			],
+			[
+				"q",
+				"query	statement"
+			],
+			[
+				"make",
+				"make_geolocator_query	function"
+			],
+			[
+				"query",
+				"query_data	forstmt"
+			],
+			[
+				"quer",
+				"query_data	forstmt"
+			],
+			[
+				"main",
+				"main_lng_lat	statement"
+			],
+			[
+				"file",
+				"file_lines	statement"
+			],
+			[
+				"_val",
+				"_validate_value	function"
+			],
+			[
+				"Defa",
+				"DefaultCityValidator	class"
+			],
+			[
+				"Entit",
+				"EntityType	class"
+			],
+			[
+				"country",
+				"country_id	statement"
+			],
+			[
+				"entity",
+				"entity_id"
+			],
+			[
+				"stat",
+				"state_code	forstmt"
+			],
+			[
+				"_get",
+				"_get_single_matching_entity	function"
+			],
+			[
+				"search_resu",
+				"search_results_canonical_name	statement"
+			],
+			[
+				"search_res",
+				"search_results_canonical_name	statement"
+			],
+			[
+				"prefer",
+				"preferred_name_match_ids	statement"
+			],
+			[
+				"canoni",
+				"canonical_name_matches	statement"
+			],
+			[
+				"mock_sear",
+				"mock_search_canonical_name	param"
+			],
+			[
+				"eti",
+				"entity_logic"
+			],
+			[
+				"denorm",
+				"denormed_entity	statement"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": ":w",
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"git checkou",
+				"Git: Checkout Current File"
+			],
+			[
+				"edi",
+				"Project: Edit Project"
+			],
+			[
+				"edit",
+				"Project: Edit"
+			],
+			[
+				"git lo",
+				"Git: Log All"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"git ",
+				"Set Syntax: Git Graph"
+			],
+			[
+				"pretty",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"json pre",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"rem",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"inden",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"keyb",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"tra",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"trail",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"aut",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"au",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"tab",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"a",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"git bra",
+				"Git: Change Branch"
+			],
+			[
+				"auto",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"remove",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"case",
+				"Convert Case: Upper Case"
+			],
+			[
+				"git checou",
+				"Git: Checkout Current File"
+			],
+			[
+				"trai",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"trailin",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"at",
+				"Anaconda: Run Last Test"
+			],
+			[
+				"anaco",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"pep",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"anaconda",
+				"Anaconda: Vagrant Enable"
+			],
+			[
+				"unfold",
+				"Code Folding: Unfold All"
+			],
+			[
+				"git chec",
+				"Git: Checkout Current File"
+			],
+			[
+				"autop",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"ta",
+				"View: Toggle Tabs"
+			],
+			[
+				"toggle ta",
+				"View: Toggle Tabs"
+			],
+			[
+				"t",
+				"View: Toggle Tabs"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"auo",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"conv",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"ana",
+				"Anaconda: Vagrant Reload"
+			],
+			[
+				"anac",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"r",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"indentation",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"white",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"git diff",
+				"Git: Diff All Files"
+			],
+			[
+				"git diff ",
+				"Git: Diff Current File (Ignore Whitespace)"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"project",
+				"Project: Edit"
+			],
+			[
+				"settin",
+				"Preferences: Settings - User"
+			],
+			[
+				"setting",
+				"Preferences: Settings - Default"
+			],
+			[
+				"whites",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"conver to sp",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"pref",
+				"Preferences: Settings - Default"
+			],
+			[
+				"prefe",
+				"Preferences: Settings - User"
+			],
+			[
+				"anaconda en",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"pep8",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"re",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"projec",
+				"Project: Edit Project"
+			],
+			[
+				"prefer",
+				"Preferences: Settings - User"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"anacon",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"indent",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"traili",
+				"Whitespace: Remove Trailing Whitespace"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"disabe",
+				"Package Control: Disable Package"
+			],
+			[
+				"prefere",
+				"Preferences: Settings - Default"
+			]
+		],
+		"width": 431.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import subprocess; subprocess.call([\"/usr/bin/python\", \"-c\", \"print('Hello world')\"])",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/sriram/sp/spectacle",
+		"/Users/sriram/sp/spectacle/static",
+		"/Users/sriram/sp/spectacle/static/css",
+		"/Users/sriram/sp/spectacle/static/js",
+		"/Users/sriram/sp/spectacle/static/js/modules",
+		"/Users/sriram/sp/spectacle/static/pdf",
+		"/Users/sriram/sp/spectacle/templates"
+	],
+	"file_history":
+	[
+		"/Users/sriram/sp/anotherbloggerbloke/_sass/_layout.scss",
+		"/Users/sriram/sp/anotherbloggerbloke/_sass/_base.scss",
+		"/Users/sriram/sp/spectacle/static/css/style.css",
+		"/Users/sriram/sp/spectacle/static/js/modules/searcher.js",
+		"/Users/sriram/sp/spectacle/static/js/modules/new_doc_adder.js",
+		"/Users/sriram/sp/spectacle/views.py",
+		"/Users/sriram/sp/spectacle/templates/add_document.html",
+		"/Users/sriram/sp/spectacle/templates/homepage2.html",
+		"/Users/sriram/sp/spectacle/templates/homepage.html",
+		"/Users/sriram/sp/spectacle/static/css/materialize.css",
+		"/Users/sriram/sp/spectacle/static/js/modules/popular.js",
+		"/Users/sriram/sp/spectacle/static/js/materialize.js",
+		"/Users/sriram/sp/spectacle/templates/view_document.html",
+		"/Users/sriram/Downloads/starter-template/index.html",
+		"/Users/sriram/sp/spectacle/spectacle/flightdeck/document.py",
+		"/Users/sriram/sp/spectacle/spectacle/data_layer/document_data.py",
+		"/Users/sriram/sp/spectacle/spectacle/data_layer/database_setup.py",
+		"/Users/sriram/sp/spectacle/spectacle/flightdeck/search.py",
+		"/Users/sriram/sp/spectacle/tests/dummy.py",
+		"/Users/sriram/sp/spectacle/requirements.txt",
+		"/Users/sriram/sp/spectacle/__init__.py",
+		"/Users/sriram/sp/spectacle/templates/search_results.html",
+		"/Users/sriram/sp/spectacle/templates/document_view.html",
+		"/Users/sriram/sp/spectacle/spectacle/ingestion/ingest_document.py",
+		"/Users/sriram/sp/spectacle/spectacle.sublime-project",
+		"/Users/sriram/sp/flasknotes/templates/homepage.html",
+		"/Users/sriram/sp/flasknotes/static/css/skeleton.css",
+		"/Users/sriram/sp/flasknotes/templates/home2.html",
+		"/Users/sriram/sp/flasknotes/static/js/modules/searcher.js",
+		"/Users/sriram/sp/flasknotes/static/js/modules/popular.js",
+		"/Users/sriram/sp/flasknotes/static/js/notes.js",
+		"/Users/sriram/sp/flasknotes/requirements.txt",
+		"/Users/sriram/sp/flasknotes/main.py",
+		"/Users/sriram/sp/flasknotes/app.py",
+		"/Users/sriram/sp/leaflettest/index.html",
+		"/Users/sriram/sp/flasknotes/api.py",
+		"/Users/sriram/sp/flasknotes/templates/note.html",
+		"/Volumes/flightdeck2/pg/places_db/tests/views/entity_test.py",
+		"/Volumes/flightdeck2/pg/places_db/notes/testpy_interview.py",
+		"/Volumes/flightdeck2/pg/places_db/notes/common_curls.txt",
+		"/Volumes/flightdeck2/pg/places_db/api_docs/swagger.yaml",
+		"/Volumes/flightdeck2/pg/places_db/tests/views/fact_test.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/logic/fact.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/logic/entity.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/views/entity.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/views/fact.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/config.py",
+		"/Volumes/flightdeck2/pg/places_db/tests/logic/conftest.py",
+		"/Volumes/flightdeck2/pg/places_db/tests/logic/search_test.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/logic/search.py",
+		"/Volumes/flightdeck2/pg/places_db/tests/logic/entity_test.py",
+		"/Volumes/flightdeck2/pg/places_db/tests/views/search_test.py",
+		"/Volumes/flightdeck2/pg/places_db/tests/utils/geometry_test.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/views/search.py",
+		"/Volumes/flightdeck2/pg/places_db/batch/geometry_fact_generator.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/logic/validation.py",
+		"/Volumes/flightdeck2/pg/places_db/places_db/data_models/entity.py",
+		"/Users/sriram/sublime_projects/placesdb.sublime-project",
+		"/Users/sriram/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Volumes/flightdeck/pg/places_db/places_db/logic/validation.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/utils/geometry.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/logic/entity.py",
+		"/Volumes/flightdeck/pg/places_db/tests/logic/entity_test.py",
+		"/Volumes/flightdeck/pg/places_db/batch/hoods_importer.py",
+		"/Volumes/flightdeck/pg/places_db/tests/utils/geometry_test.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/logic/search.py",
+		"/Volumes/flightdeck/pg/places_db/batch/zipcode_importer.py",
+		"/Volumes/flightdeck/pg/places_db/batch/verify_candidates_zipcodes_cg.py",
+		"/Volumes/flightdeck/pg/places_db/batch/static_locations_importer.py",
+		"/Volumes/flightdeck/pg/places_db/batch/geometry_fact_generator.py",
+		"/Volumes/flightdeck/pg/places_db/batch/city_bounds_importer.py",
+		"/Volumes/flightdeck/pg/places_db/tests/logic/conftest.py",
+		"/Volumes/flightdeck/pg/places_db/tests/logic/validation_test.py",
+		"/Volumes/flightdeck/pg/places_db/virtualenv_run/include/python2.7",
+		"/Volumes/flightdeck/pg/places_db/tests/logic/utils_test.py",
+		"/Volumes/flightdeck/pg/places_db/requirements.txt",
+		"/Volumes/flightdeck/pg/places_db/batch/verify_candidates_towns_cg.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/logic/utils.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/utils/exception.py",
+		"/Volumes/flightdeck/pg/places_db/batch/export_validator.py",
+		"/Volumes/flightdeck/pg/places_db/tests/utils/geojson_utils_test.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/utils/geojson_utils.py",
+		"/Volumes/flightdeck/pg/places_db/tests/logic/geojson_utils_test.py",
+		"/Volumes/flightdeck/pg/places_db/tests/utils/__init__.py",
+		"/Volumes/flightdeck/pg/data/martinez_ca",
+		"/Volumes/flightdeck/pg/places_db/places_db/logic/geojson_utils.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/utils/__init__.py",
+		"/Volumes/flightdeck/pg/places_db/notes/wof_indexer.sh",
+		"/Volumes/flightdeck/pg/places_db/batch/multiple_canonical_names_finder.py",
+		"/Volumes/flightdeck/pg/places_db/notes/get_hood_city_IDs.py",
+		"/Volumes/flightdeck/pg/places_db/batch/merge_non_hoods_to_city.py",
+		"/Volumes/flightdeck/pg/places_db/batch/data/delete_cities_id",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/not_added_manually_added_locations.json",
+		"/Volumes/flightdeck/pg/places_db/batch/localize_location_importer.py",
+		"/Volumes/flightdeck/pg/data/manual_geom_verify.txt",
+		"/Volumes/flightdeck/pg/places_db/notes/common_sql.sql",
+		"/Volumes/flightdeck/pg/places_db/notes/data_get_hood_city_IDs_2.csv",
+		"/Volumes/flightdeck/pg/places_db/batch/data/city_hood_IDs",
+		"/Volumes/flightdeck/pg/data/czb_updates.csv",
+		"/Volumes/flightdeck/pg/places_db/batch/importer.py",
+		"/Volumes/flightdeck/pg/places_db/batch/adhoc_fact_loader.py",
+		"/Volumes/flightdeck/pg/places_db/batch/yelp_biz_importer.py",
+		"/Users/sriram/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/sriram/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Volumes/flightdeck/pg/places_db/places_db/config.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/views/fact.py",
+		"/Volumes/flightdeck/pg/places_db/api_docs/swagger.yaml",
+		"/Volumes/flightdeck/pg/places_db/batch/data/adhoc_geometry_fact_data",
+		"/Volumes/flightdeck/pg/data/_canonical_url_all_unequal",
+		"/Volumes/flightdeck/pg/data/_canonical_url_nonUS_unequal",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/not_added_cm_city_locations.json",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/not_added_city_alias_locations.json",
+		"/Volumes/flightdeck/pg/places_db/cm_city_urls.tsv",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/city_alias_locations.json",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/cm_city_locations.json",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/geocoder_corrections.json",
+		"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations/manually_added_locations.json",
+		"/Volumes/flightdeck/pg/places_db/config.yaml",
+		"/Volumes/flightdeck/pg/places_db/geolocator_static_locations/city_alias_locations.json",
+		"/Volumes/flightdeck/pg/places_db/geolocator_static_locations/cm_city_locations.json",
+		"/Volumes/flightdeck/pg/places_db/geolocator_static_locations/manually_added_locations.json",
+		"/Volumes/flightdeck/pg/places_db/tests/views/entity_test.py",
+		"/Volumes/flightdeck/pg/places_db/places_db/views/entity.py",
+		"/Volumes/flightdeck/pg/places_db/tests/views/fact_test.py",
+		"/Volumes/flightdeck/pg/data/_cm_cities_geobox_comparison.tsv",
+		"/Volumes/flightdeck/pg/places_db/notes/common_curls.txt",
+		"/Volumes/flightdeck/pg/data/cm_cities.json",
+		"/Volumes/flightdeck/pg/data/manual_geom_parent_verify.tsv"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"<open folders>",
+			"/Volumes/flightdeck/pg/places_db/cordite/geolocator_static_locations",
+			"/Volumes/flightdeck/pg/places_db/geolocator_static_locations",
+			"/Volumes/flightdeck/pg/places_db/places_db",
+			"/Volumes/flightdeck/pg/places_db/tests",
+			"/Volumes/flightdeck/pg/places_db/places_db",
+			"/Volumes/flightdeck/pg/places_db/batch",
+			"/Volumes/flightdeck/pg/places_db",
+			"/Volumes/flightdeck/pg/places_db/places_db/logic",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"000",
+			"#000",
+			"deep-orange darken-1",
+			"f4511e",
+			"ff9800",
+			"orange",
+			"#000",
+			"teal",
+			"icon_prefix2",
+			"teal",
+			"style=\"margin-top: 5%\"",
+			"Roboto",
+			">\n",
+			"=\"#\">Navbar Link</a></li>\n      </ul>",
+			"add_document",
+			"view",
+			"path",
+			"six",
+			"twelve",
+			"searchResultsMainDiv",
+			"Entry",
+			"variations",
+			"a9c026",
+			"Searcher",
+			"();\n",
+			"searchString",
+			"Editor",
+			" ",
+			"h3",
+			"imagesLoaded",
+			"setupMasonry",
+			"^ *Notes",
+			"^ *Notes ",
+			"^Notes ",
+			" Notes ",
+			"Notes",
+			"notes",
+			"Notes",
+			" ",
+			"entity",
+			"side_effect",
+			"            ",
+			"EntityList",
+			"NameList",
+			"ancestry",
+			"results",
+			"names",
+			"filter_function",
+			"results",
+			"filtered_results",
+			"include_non_canonical_name_matches",
+			"from places_db.logic.validation import FactType\n",
+			"geographical_center",
+			"geographical",
+			"_new_search",
+			"denorma",
+			"get_entit",
+			"ancestry",
+			"search_tree",
+			"entity_tree",
+			"mismatch",
+			"entitylist",
+			"->",
+			"denorm_en",
+			"getAncestry",
+			"ancestree",
+			"flightdeck",
+			"logic.utils",
+			"validation.fact",
+			"validation",
+			"facttype",
+			"logic.utils",
+			"<<<",
+			">>>",
+			"EntityType",
+			"logic.utils",
+			"for",
+			"validate_center",
+			"test_validate_center",
+			"validate_center",
+			"valueerror",
+			"test_",
+			"get_geographical_center",
+			"invalid_geojson_blobs.append(",
+			"validate_center",
+			"center_",
+			"center",
+			"deepcopy",
+			"get_geographical_center",
+			"/",
+			"is_bbox_valid",
+			"is_point_valid",
+			"lat",
+			"90.0",
+			"180.0",
+			"-180.0",
+			"MIN_LAT_VALUE",
+			"or",
+			"canonical_name",
+			"GET",
+			"canonical_name",
+			"GET",
+			"v1",
+			"get",
+			"delete",
+			"    ",
+			"simplejson",
+			"fileinput",
+			"import simplejson",
+			"city_id",
+			"select",
+			"    ",
+			"   ",
+			"FactLoader",
+			":",
+			"int",
+			"fv",
+			"Somerset",
+			"21418",
+			"145.7669744",
+			"79.60528839999999",
+			"141.3543763",
+			"139.5945272779328",
+			"136.906398",
+			"34.73820000000001",
+			"139.6380256",
+			"135.7680294",
+			"35.69407519433786"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"GET",
+			"get",
+			",",
+			"logic._search",
+			"u'Munich'",
+			"",
+			"wget --spider"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 69.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "spectacle.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"searcher",
+				"static/js/modules/searcher.js"
+			],
+			[
+				"home2",
+				"templates/homepage2.html"
+			],
+			[
+				"document",
+				"spectacle/flightdeck/document.py"
+			],
+			[
+				"view",
+				"views.py"
+			],
+			[
+				"searcher.",
+				"static/js/modules/searcher.js"
+			],
+			[
+				"flightde",
+				"spectacle/flightdeck/document.py"
+			],
+			[
+				"requi",
+				"requirements.txt"
+			],
+			[
+				"skele",
+				"static/css/skeleton.css"
+			],
+			[
+				"v",
+				"views.py"
+			],
+			[
+				"note.",
+				"static/js/notes.js"
+			],
+			[
+				"swagger",
+				"api_docs/swagger.yaml"
+			],
+			[
+				"fact_tes",
+				"tests/views/fact_test.py"
+			],
+			[
+				"fact_test",
+				"tests/logic/fact_test.py"
+			],
+			[
+				"views/entity_te",
+				"tests/views/entity_test.py"
+			],
+			[
+				"views/entit",
+				"places_db/views/entity.py"
+			],
+			[
+				"entity_tes",
+				"tests/views/entity_test.py"
+			],
+			[
+				"entity_test",
+				"tests/views/entity_test.py"
+			],
+			[
+				"fact",
+				"places_db/logic/fact.py"
+			],
+			[
+				"logic/entit",
+				"places_db/logic/entity.py"
+			],
+			[
+				"views/ent",
+				"places_db/views/entity.py"
+			],
+			[
+				"config.p",
+				"places_db/config.py"
+			],
+			[
+				"views/e",
+				"places_db/views/entity.py"
+			],
+			[
+				"config.py",
+				"places_db/config.py"
+			],
+			[
+				"conftest",
+				"tests/logic/conftest.py"
+			],
+			[
+				"entity.",
+				"places_db/logic/entity.py"
+			],
+			[
+				"search_test",
+				"tests/logic/search_test.py"
+			],
+			[
+				"views/sear",
+				"places_db/views/search.py"
+			],
+			[
+				"config.",
+				"places_db/config.py"
+			],
+			[
+				"geometry_tes",
+				"tests/utils/geometry_test.py"
+			],
+			[
+				"geometr",
+				"batch/geometry_fact_generator.py"
+			],
+			[
+				"search.",
+				"places_db/logic/search.py"
+			],
+			[
+				"logic/entity",
+				"places_db/logic/entity.py"
+			],
+			[
+				"validation",
+				"places_db/logic/validation.py"
+			],
+			[
+				"logi/csear",
+				"places_db/logic/search.py"
+			],
+			[
+				"view/entit",
+				"tests/views/entity_test.py"
+			],
+			[
+				"entity",
+				"places_db/data_models/entity.py"
+			],
+			[
+				"views/",
+				"places_db/views/entity.py"
+			],
+			[
+				"logic/sear",
+				"places_db/logic/search.py"
+			],
+			[
+				"logic/entity.p",
+				"places_db/logic/entity.py"
+			],
+			[
+				"views/en",
+				"places_db/views/entity.py"
+			],
+			[
+				"confi",
+				"places_db/config.py"
+			],
+			[
+				"entit",
+				"places_db/logic/entity.py"
+			],
+			[
+				"vali",
+				"places_db/logic/validation.py"
+			],
+			[
+				"utils/geo",
+				"places_db/utils/geometry.py"
+			],
+			[
+				"hoods",
+				"batch/hoods_importer.py"
+			],
+			[
+				"utils/ge",
+				"places_db/utils/geometry.py"
+			],
+			[
+				"validation.",
+				"places_db/logic/validation.py"
+			],
+			[
+				"zipcode",
+				"batch/verify_candidates_zipcodes_cg.py"
+			],
+			[
+				"logic/va",
+				"places_db/logic/validation.py"
+			],
+			[
+				"conftes",
+				"tests/logic/conftest.py"
+			],
+			[
+				"tests/logic/validation_test.py",
+				"tests/logic/validation_test.py"
+			],
+			[
+				"tests/logic/utils_test.py",
+				"tests/logic/utils_test.py"
+			],
+			[
+				"places_db/logic/validation.py",
+				"places_db/logic/validation.py"
+			],
+			[
+				"places_db/logic/entity.py",
+				"places_db/logic/entity.py"
+			],
+			[
+				"batch/static_locations_importer.py",
+				"batch/static_locations_importer.py"
+			],
+			[
+				"batch/hoods_importer.py",
+				"batch/hoods_importer.py"
+			],
+			[
+				"city_bounds",
+				"batch/city_bounds_importer.py"
+			],
+			[
+				"require",
+				"requirements.txt"
+			],
+			[
+				"search.p",
+				"places_db/logic/search.py"
+			],
+			[
+				"verify_",
+				"batch/verify_candidates_towns_cg.py"
+			],
+			[
+				"static",
+				"batch/static_locations_importer.py"
+			],
+			[
+				"city_boun",
+				"batch/city_bounds_importer.py"
+			],
+			[
+				"utils_tes",
+				"tests/logic/utils_test.py"
+			],
+			[
+				"utils",
+				"places_db/logic/utils.py"
+			],
+			[
+				"util",
+				"places_db/logic/utils.py"
+			],
+			[
+				"utils_",
+				"tests/logic/utils_test.py"
+			],
+			[
+				"validation_te",
+				"tests/logic/validation_test.py"
+			],
+			[
+				"export",
+				"batch/export_validator.py"
+			],
+			[
+				"logic/uti",
+				"places_db/logic/utils.py"
+			],
+			[
+				"validatio",
+				"places_db/logic/validation.py"
+			],
+			[
+				"verify_can",
+				"batch/verify_candidates_towns_cg.py"
+			],
+			[
+				"canonica_names",
+				"batch/multiple_canonical_names_finder.py"
+			],
+			[
+				"localiz",
+				"batch/localize_location_importer.py"
+			],
+			[
+				"not_add",
+				"cordite/geolocator_static_locations/not_added_manually_added_locations.json"
+			],
+			[
+				"common_s",
+				"notes/common_sql.sql"
+			],
+			[
+				"import",
+				"batch/importer.py"
+			],
+			[
+				"logic/ent",
+				"places_db/logic/entity.py"
+			],
+			[
+				"biz",
+				"batch/yelp_biz_importer.py"
+			],
+			[
+				"adhoc_fa",
+				"batch/adhoc_fact_loader.py"
+			],
+			[
+				"bounds",
+				"batch/city_bounds_importer.py"
+			],
+			[
+				"common_",
+				"notes/common_sql.sql"
+			],
+			[
+				"views/fac",
+				"places_db/views/fact.py"
+			],
+			[
+				"valida",
+				"places_db/logic/validation.py"
+			],
+			[
+				"batch/geo",
+				"batch/geometry_fact_generator.py"
+			],
+			[
+				"config",
+				"config.yaml"
+			],
+			[
+				"importer",
+				"batch/importer.py"
+			],
+			[
+				"",
+				"cm_city_urls.tsv"
+			],
+			[
+				"views/fa",
+				"places_db/views/fact.py"
+			],
+			[
+				"city_alias",
+				"geolocator_static_locations/city_alias_locations.json"
+			],
+			[
+				"cm_ci",
+				"geolocator_static_locations/cm_city_locations.json"
+			],
+			[
+				"manuall",
+				"geolocator_static_locations/manually_added_locations.json"
+			],
+			[
+				"common_sq",
+				"notes/common_sql.sql"
+			],
+			[
+				"swagg",
+				"api_docs/swagger.yaml"
+			],
+			[
+				"views/fact_tes",
+				"tests/views/fact_test.py"
+			],
+			[
+				"validat",
+				"places_db/logic/validation.py"
+			],
+			[
+				"common_cur",
+				"notes/common_curls.txt"
+			],
+			[
+				"batch/import",
+				"batch/importer.py"
+			],
+			[
+				"batch/hoods",
+				"batch/hoods_importer.py"
+			],
+			[
+				"fact_loader",
+				"batch/adhoc_fact_loader.py"
+			],
+			[
+				"notes",
+				"notes/common_sql.sql"
+			],
+			[
+				"fact.",
+				"places_db/logic/fact.py"
+			],
+			[
+				"validation_tes",
+				"tests/logic/validation_test.py"
+			],
+			[
+				"notes/sq",
+				"notes/common_sql.sql"
+			],
+			[
+				"not_added_ma",
+				"cordite/geolocator_static_locations/not_added_manually_added_locations.json"
+			],
+			[
+				"not_manua",
+				"cordite/geolocator_static_locations/not_added_manually_added_locations.json"
+			],
+			[
+				"views/fact",
+				"places_db/views/fact.py"
+			],
+			[
+				"views_tes",
+				"tests/views/entity_test.py"
+			],
+			[
+				"views_test",
+				"tests/views/entity_test.py"
+			],
+			[
+				"hoods_im",
+				"batch/hoods_importer.py"
+			],
+			[
+				"utils.p",
+				"places_db/logic/utils.py"
+			],
+			[
+				"batch/",
+				"batch/localize_location_importer.py"
+			],
+			[
+				"generate",
+				"notes/generate_cm_yelp_links.py"
+			],
+			[
+				"syncer",
+				"batch/syncer.py"
+			],
+			[
+				"defa",
+				"batch/default_cities_importer.py"
+			],
+			[
+				"search_te",
+				"tests/logic/search_test.py"
+			],
+			[
+				"search.py",
+				"places_db/logic/search.py"
+			],
+			[
+				"hoods_",
+				"batch/hoods_importer.py"
+			],
+			[
+				"country_",
+				"batch/country_state_importer.py"
+			],
+			[
+				"adhoc_ent",
+				"batch/adhoc_entity_loader.py"
+			],
+			[
+				"adho",
+				"batch/adhoc_fact_loader.py"
+			],
+			[
+				"yelp_bi",
+				"batch/yelp_biz_importer.py"
+			],
+			[
+				"yelp",
+				"batch/yelp_biz_importer.py"
+			],
+			[
+				"genera",
+				"batch/generate_yelp_biz_importer_data_file.sh"
+			],
+			[
+				"loc",
+				"batch/localize_location_importer.py"
+			],
+			[
+				"yelp_",
+				"batch/yelp_biz_importer.py"
+			],
+			[
+				"search",
+				"places_db/logic/search.py"
+			],
+			[
+				"data_models/entit",
+				"places_db/data_models/entity.py"
+			],
+			[
+				"logic/val",
+				"places_db/logic/validation.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "geoloca",
+		"selected_items":
+		[
+			[
+				"geoloca",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"geolocator",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"geolo",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"ge",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"geolocato",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"geo",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"yelp",
+				"~/sublime_projects/yelpmain.sublime-project"
+			],
+			[
+				"gl",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"",
+				"~/sublime_projects/yelpmain.sublime-project"
+			],
+			[
+				"ye",
+				"~/sublime_projects/yelpmain.sublime-project"
+			],
+			[
+				"geol",
+				"~/sublime_projects/geolocator.sublime-project"
+			],
+			[
+				"pla",
+				"~/sublime_projects/placesdb.sublime-project"
+			],
+			[
+				"place",
+				"~/sublime_projects/placesdb.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
