@@ -1,5 +1,6 @@
 from flask import jsonify, render_template, request
 import spectacle.flightdeck.document as document_logic
+import spectacle.flightdeck.document as unverified_document_logic
 from spectacle.flightdeck.search import search_documents
 from app import app
 
@@ -40,6 +41,16 @@ def getdocument(docid):
 def search():
     search_string = request.args.get('query')
     return jsonify(search_documents(search_string))
+
+
+@app.route('/document/ingest', methods=['POST'])
+def ingest_document():
+    doc_data = request.form
+    new_doc_id = unverified_document_logic.add_document(
+        doc_data['title'], doc_data['topic_id'], doc_data['content'],
+        doc_data['original_url'], doc_data['source']
+    )
+    return jsonify({'id': new_doc_id})
 
 
 @app.route('/document/add', methods=['POST'])
