@@ -9,6 +9,7 @@ Searcher = (function(){
             settings.searchButton = $('#search_button');
             settings.searchResultsPanel = $('#search_results_panel');
             settings.searchResultsDiv = $('#search_results');
+            settings.homepageFeaturesPanel=$('#homepage-features-panel');
             settings.searchBox.focus();
             this.bindUIActions();
         },
@@ -17,7 +18,8 @@ Searcher = (function(){
             searchQuery = settings.searchBox.val();
             $.get(settings.searchURL, {query: searchQuery}, function(data) {
                 settings.searchResultsDiv.empty();
-                settings.searchResultsPanel.slideDown( "slow" );
+                settings.searchResultsPanel.show();
+                settings.homepageFeaturesPanel.hide();
                 $.each(data, function(i, result){
                     result_doc = result.document;
                     result_snippet = result.snippet;

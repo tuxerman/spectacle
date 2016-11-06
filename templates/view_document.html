@@ -47,12 +47,17 @@
     </div>
 
     <div class="row">
-      <div class="eight columns" style="margin-top: 5%">
+      <div class="twelve columns" style="margin-top: 5%">
         <h4>Content</h4>
         <p> {{document_data.content}} </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="eight columns" style="margin-top: 5%">
         <h4>Document</h4>
-        <object data="/pdf_document/pdf_1.pdf" type="application/pdf" width="100%" height="700">
-          <iframe src="/pdf_document/pdf_1.pdf" width="100%" height="700" style="border: none;">
+        <object data="/pdf_document/{{document_data.id}}.pdf" type="application/pdf" width="100%" height="700">
+          <iframe src="/pdf_document/{{document_data.id}}.pdf" width="100%" height="700" style="border: none;">
             This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf_document/pdf_1.pdf">Download PDF</a>
           </iframe>
         </object>
