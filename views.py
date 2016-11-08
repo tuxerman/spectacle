@@ -1,23 +1,40 @@
 from flask import jsonify, render_template, request
 import spectacle.flightdeck.document as document_logic
-import spectacle.flightdeck.document as unverified_document_logic
 from spectacle.flightdeck.search import search_documents
 from app import app
+from flask import abort
 
 
 @app.route('/', methods=['GET'])
-def show_home():
+def www_show_home():
     return render_template('homepage.html')
 
 
-@app.route('/home2', methods=['GET'])
-def show_home2():
-    return render_template('homepage2.html')
+@app.route('/submit', methods=['GET'])
+def www_show_submit():
+    return render_template('submit_document.html')
 
 
-@app.route('/add', methods=['GET'])
-def show_add():
-    return render_template('add_document.html')
+@app.route('/document/<int:docid>', methods=['GET'])
+def www_view_document(docid):
+    doc_data = document_logic.get_published_document(docid)
+    if doc_data:
+        return render_template(
+            'view_document.html',
+            document_data=doc_data)
+    else:
+        abort(404)
+
+
+@app.route('/document/review/<int:docid>', methods=['GET'])
+def www_review_document(docid):
+    doc_data = document_logic.get_document(docid)
+    if doc_data:
+        return render_template(
+            'review_document.html',
+            document_data=doc_data)
+    else:
+        abort(404)
 
 
 @app.route('/pdf_document/<string:filename>', methods=['GET'])
@@ -26,30 +43,31 @@ def get_pdf(filename):
     return app.send_static_file('pdf/' + filename)
 
 
-@app.route('/document/<int:docid>', methods=['GET'])
-def getdocument(docid):
-    doc_data = document_logic.get_document(docid)
-    if doc_data:
-        return render_template(
-            'view_document.html',
-            document_data=doc_data)
-    else:
-        return None
-
-
 @app.route('/document/search', methods=['GET'])
 def search():
     search_string = request.args.get('query')
     return jsonify(search_documents(search_string))
 
 
-@app.route('/document/ingest', methods=['POST'])
-def ingest_document():
+@app.route('/document/submit', methods=['POST'])
+def submit_document():
     doc_data = request.form
-    new_doc_id = unverified_document_logic.add_document(
+    new_doc_id = document_logic.add_document(
         doc_data['title'], doc_data['topic_id'], doc_data['content'],
         doc_data['original_url'], doc_data['source']
     )
+    return jsonify({'id': new_doc_id})
+
+
+@app.route('/document/publish/<int:docid>', methods=['POST'])
+def publish_document(docid):
+    doc_data = request.form
+    new_doc_id = document_logic.edit_document(
+        docid,
+        doc_data['title'], doc_data['topic_id'], doc_data['content'],
+        doc_data['original_url'], doc_data['source']
+    )
+    document_logic.publish_document(docid)
     return jsonify({'id': new_doc_id})
 
 
