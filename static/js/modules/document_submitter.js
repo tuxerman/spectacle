@@ -1,6 +1,6 @@
-NewDocAdder = (function(){
+DocumentSubmitter = (function(){
     var settings = {
-        postURL: '/document/add'
+        postURL: '/document/submit'
     };
 
     return {
@@ -16,14 +16,15 @@ NewDocAdder = (function(){
             settings.titleBox.focus();
             this.bindUIActions();
         },
-        addDoc: function (newDocInfo) {
+        submitDoc: function (newDocInfo) {
             $.post(settings.postURL, data=newDocInfo, function(data) {
                 console.log(data.id);
-                alert("Document added with ID:" + data.id);
+                alert("New document has been submitted for review:" + data.id);
             });
+            window.location.href = '/';
         },
         bindUIActions: function() {
-            addFunction = this.addDoc;
+            addFunction = this.submitDoc;
             settings.submitButton.click(function (e) {
                 newDocInfo = {
                     'title': settings.titleBox.val(),

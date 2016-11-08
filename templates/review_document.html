@@ -26,10 +26,11 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/modules/new_doc_adder.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/modules/document_reviewer.js') }}"></script>
   <script>
+    var globalDocId = {{ document_data.id | safe }};
     $(document).ready(function() {
-        NewDocAdder.init();
+        DocumentReviewer.init();
     });
   </script>
 </head>
@@ -42,48 +43,48 @@
     <div class="row">
       <div class="twelve columns" style="margin-top: 5%">
         <div class="logo" onclick="location.href='/';"> <h2>Spectacle</h2> </div>
-        <p>Add New Document</p>
+        <p>Review: {{document_data.title}}</p>
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_title">Title</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_title">
+        <input class="u-full-width" type="text" placeholder="" id="form_title" value="{{document_data.title}}">
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_content">Content</label>
-        <textarea class="u-full-width" placeholder="" id="form_content"></textarea>
+        <textarea class="u-full-width" placeholder="" id="form_content">{{document_data.content}}</textarea>
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_topic_id">Topic ID</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_topic_id">
+        <input class="u-full-width" type="text" placeholder="" id="form_topic_id" value="{{document_data.topic_id}}">
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_original_url">Original URL</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_original_url">
+        <input class="u-full-width" type="text" placeholder="" id="form_original_url" value="{{document_data.original_url}}">
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_source">Source</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_source">
+        <input class="u-full-width" type="text" placeholder="" id="form_source" value="{{document_data.source}}">
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
       <div class="three columns"style="margin-top: 1rem">
-        <button class="button-primary" id="submit_button">Submit</button>
+        <button class="button-primary" id="publish_button">Publish</button>
       </div>
     </div>
 
