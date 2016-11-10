@@ -19,6 +19,7 @@ class Document(BaseModel):
     title = CharField()
     topic_id = IntegerField()
     content = TextField()
+    summary = TextField()
     original_url = CharField()
     source = CharField()
     date_added = DateTimeField()
@@ -41,8 +42,8 @@ def db_get_document_by_id(doc_id):
     return Document.get(Document.id == doc_id)
 
 
-def db_get_document_by_title(title):
-    return Document.get(Document.title == title)
+def db_get_all_unpublished_doc_ids():
+    return [doc.id for doc in Document.select().where(Document.published == False)]
 
 
 def db_publish_document(doc_id):
@@ -54,14 +55,15 @@ def db_publish_document(doc_id):
     if not already_published:
         FTSEntry.create(
             entry_id=doc.id,
-            content='\n'.join((doc.title, doc.content)))
+            content='\n'.join((doc.title, doc.content, doc.summary)))
 
 
-def db_add_document(title, topic_id, content, original_url, source):
+def db_add_document(title, topic_id, content, summary, original_url, source):
     new_document = Document.create(
         title=title,
         topic_id=topic_id,
         content=content,
+        summary=summary,
         original_url=original_url,
         source=source,
         date_added=datetime.now(),
@@ -71,13 +73,14 @@ def db_add_document(title, topic_id, content, original_url, source):
     return new_document.id
 
 
-def db_edit_document(doc_id, title, topic_id, content, original_url, source):
+def db_edit_document(doc_id, title, topic_id, content, summary, original_url, source):
     doc = Document.get(Document.id == doc_id)
     if not doc:
         return None
     doc.title = title
     doc.topic_id = topic_id
     doc.content = content
+    doc.summary = summary
     doc.original_url = original_url
     doc.source = source
     doc.save()

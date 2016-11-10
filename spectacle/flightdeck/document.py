@@ -9,6 +9,7 @@ from spectacle.data_layer.document_data import db_get_document_by_id
 from spectacle.data_layer.document_data import db_add_document
 from spectacle.data_layer.document_data import db_edit_document
 from spectacle.data_layer.document_data import db_publish_document
+from spectacle.data_layer.document_data import db_get_all_unpublished_doc_ids
 
 
 class Document(namedtuple(
@@ -17,9 +18,11 @@ class Document(namedtuple(
         'title',
         'topic_id',
         'content',
+        'summary',
         'original_url',
         'source',
         'date_added',
+        'date_published',
         'published'
     ]
 )):
@@ -33,9 +36,11 @@ def get_document(doc_id):
                         title=doc.title,
                         topic_id=doc.topic_id,
                         content=doc.content,
+                        summary=doc.summary,
                         original_url=doc.original_url,
                         source=doc.source,
                         date_added=doc.date_added,
+                        date_published=doc.date_published,
                         published=doc.published,
                         )
     return None
@@ -48,21 +53,27 @@ def get_published_document(doc_id):
                         title=doc.title,
                         topic_id=doc.topic_id,
                         content=doc.content,
+                        summary=doc.summary,
                         original_url=doc.original_url,
                         source=doc.source,
                         date_added=doc.date_added,
+                        date_published=doc.date_published,
                         published=doc.published,
                         )
     return None
 
 
-def add_document(title, topic_id, content, original_url, source):
-    doc_id = db_add_document(title, topic_id, content, original_url, source)
+def get_all_unpublished_doc_ids():
+    return db_get_all_unpublished_doc_ids()
+
+
+def add_document(title, topic_id, content, summary, original_url, source):
+    doc_id = db_add_document(title, topic_id, content, summary, original_url, source)
     return doc_id
 
 
-def edit_document(doc_id, title, topic_id, content, original_url, source):
-    db_edit_document(doc_id, title, topic_id, content, original_url, source)
+def edit_document(doc_id, title, topic_id, content, summary, original_url, source):
+    db_edit_document(doc_id, title, topic_id, content, summary, original_url, source)
     return None
 
 
