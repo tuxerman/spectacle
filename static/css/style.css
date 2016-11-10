@@ -9,7 +9,12 @@
     cursor: pointer; cursor: hand;
 }
 .homepage-feature:hover {
-  background-color: #757575;
+  background-color: #bbb;
   color:#FFF;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.document-navigator {
+    padding: 20px;
+    border: 1px solid #bbb;
 }

@@ -26,7 +26,7 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/modules/documentview.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/modules/document_viewer.js') }}"></script>
   <script>
     $(document).ready(function() {
         DocumentViewer.init();
@@ -47,27 +47,42 @@
     </div>
 
     <div class="row">
-      <div class="twelve columns" style="margin-top: 5%">
-        <h4>Content</h4>
-        <p> {{document_data.content}} </p>
+      <div id="section-description" class="eight columns" style="margin-top: 5%">
+        <h4>Description</h4>
+        <p> {{document_data.summary}} </p>
+      </div>
+      <div class="four columns document-navigator" style="margin-top: 5%">
+        <h5>Navigate</h5>
+        <ul>
+          <a href="#section-description"> <li>Description</li> </a>
+          <a href="#section-document-pdf"> <li>Document</li> </a>
+          <a href="#section-metadata"> <li>Metadata</li> </a>
+        </ul>
       </div>
     </div>
 
     <div class="row">
-      <div class="eight columns" style="margin-top: 5%">
+      <div id="section-document-pdf" class="twelve columns" style="margin-top: 5%">
         <h4>Document</h4>
-        <object data="/pdf_document/pdf_1.pdf" type="application/pdf" width="100%" height="700">
-          <iframe src="/pdf_document/pdf_1.pdf" width="100%" height="700" style="border: none;">
-            This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf_document/pdf_1.pdf">Download PDF</a>
+        <object data="/pdf_document/{{document_data.id}}.pdf" type="application/pdf" width="100%" height="700">
+          <iframe src="/pdf_document/{{document_data.id}}.pdf" width="100%" height="700" style="border: none;">
+            This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf_document/{{document_data.id}}.pdf">Download PDF</a>
           </iframe>
         </object>
       </div>
-      <div class="four columns" style="margin-top: 5%">
-        <h4>Meta</h4>
-        <h5>Source</h5>
-        <p> {{document_data.source}} </p>
-        <h5>Original</h5>
-        <a href="{{ document_data.original_url }}">Click here</a>
+    </div>
+
+    <div class="row">
+      <div id="section-metadata" class="twelve columns" style="margin-top: 5%">
+        <h4>Metadata</h4>
+        <table class="u-full-width">
+          <tbody>
+            <tr> <td><b>Date Submitted</b></td> <td>{{document_data.date_added}}</td> </tr>
+            <tr> <td><b>Date Published</b></td> <td>{{document_data.date_published}}</td> </tr>
+            <tr> <td><b>Source</b></td> <td>{{document_data.source}}</td> </tr>
+            <tr> <td><b>Original URL</b></td> <td><a href="{{document_data.original_url}}">Link</a></td> </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     

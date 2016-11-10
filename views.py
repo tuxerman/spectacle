@@ -15,6 +15,27 @@ def www_show_submit():
     return render_template('submit_document.html')
 
 
+@app.route('/review', methods=['GET'])
+def www_show_review_dashboard():
+
+    def doc_review_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'source': doc.source
+        }
+
+    docs_to_review = [
+        doc_review_data(document_logic.get_document(doc_id))
+        for doc_id in document_logic.get_all_unpublished_doc_ids()
+    ]
+    return render_template(
+        'review_dashboard.html',
+        docs_to_review=docs_to_review
+    )
+
+
 @app.route('/document/<int:docid>', methods=['GET'])
 def www_view_document(docid):
     doc_data = document_logic.get_published_document(docid)
@@ -53,8 +74,12 @@ def search():
 def submit_document():
     doc_data = request.form
     new_doc_id = document_logic.add_document(
-        doc_data['title'], doc_data['topic_id'], doc_data['content'],
-        doc_data['original_url'], doc_data['source']
+        title=doc_data['title'],
+        topic_id=doc_data['topic_id'],
+        content='',  # content
+        summary=doc_data['summary'],
+        original_url=doc_data['original_url'],
+        source=doc_data['source']
     )
     return jsonify({'id': new_doc_id})
 
@@ -62,23 +87,17 @@ def submit_document():
 @app.route('/document/publish/<int:docid>', methods=['POST'])
 def publish_document(docid):
     doc_data = request.form
-    new_doc_id = document_logic.edit_document(
+    document_logic.edit_document(
         docid,
-        doc_data['title'], doc_data['topic_id'], doc_data['content'],
-        doc_data['original_url'], doc_data['source']
+        title=doc_data['title'],
+        topic_id=doc_data['topic_id'],
+        content=doc_data['content'],
+        summary=doc_data['summary'],
+        original_url=doc_data['original_url'],
+        source=doc_data['source']
     )
     document_logic.publish_document(docid)
-    return jsonify({'id': new_doc_id})
-
-
-@app.route('/document/add', methods=['POST'])
-def add_document():
-    doc_data = request.form
-    new_doc_id = document_logic.add_document(
-        doc_data['title'], doc_data['topic_id'], doc_data['content'],
-        doc_data['original_url'], doc_data['source']
-    )
-    return jsonify({'id': new_doc_id})
+    return jsonify({'success': True})
 
 
 @app.route('/popular', methods=['GET'])
