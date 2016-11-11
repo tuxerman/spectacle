@@ -1,20 +1,57 @@
 /* Custom Stylesheet */
-
-.logo {
-  cursor: pointer; cursor: hand;
+.container{
+    margin-top: 20px;
 }
-
 .homepage-feature {
+    padding:10px;
     text-align: center;
     cursor: pointer; cursor: hand;
 }
 .homepage-feature:hover {
-  background-color: #bbb;
-  color:#FFF;
+  background-color: #F4F4F4;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .document-navigator {
     padding: 20px;
-    border: 1px solid #bbb;
+    border: 1px solid #F4F4F4;
+}
+
+#header-row {
+    border-bottom: 1px solid #efefef;
+}
+
+#logo h2 {
+    font-size: 3.0rem; letter-spacing: -.1rem; color: #FF5722;
+    margin: 10px 0 0 0;
+    cursor: pointer; cursor: hand;
+}
+
+/*#nav {
+    margin: 3rem 0 0 0;
+}*/
+
+#nav ul li {
+    float: right;
+    display: inline;
+    margin: 0 20px 0 0;
+    margin-bottom: 30px;
+}
+
+#nav a {
+    text-decoration: none;
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
+
+#footer {
+    text-align: center;
+    background-color: #efefef;
+    position: relative;
+    margin-top: 40px;
+    left:0px;
+    bottom:0px;
+    width:100%;
 }
