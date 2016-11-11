@@ -3,24 +3,33 @@
 ORM and data functions for Document
 """
 from playhouse.sqlite_ext import SqliteExtDatabase
-from spectacle.data_layer.document_data import Document, FTSEntry
-
-DATABASE = 'documents.db'
-
-database = SqliteExtDatabase(DATABASE, threadlocals=True)
+from peewee import MySQLDatabase
+from peewee import Model
 
 
-def create_tables():
+SQLITE_DB = SqliteExtDatabase('documents.db', threadlocals=True)
+MYSQL_DB = MySQLDatabase(
+    "documents", host="127.0.0.1", port=3306, user="sriram", passwd="password")
+
+CURRENT_DATABASE = SQLITE_DB
+
+
+class SqliteModel(Model):
+    class Meta:
+        database = SQLITE_DB
+
+
+class MySQLModel(Model):
+    class Meta:
+        database = MYSQL_DB
+
+
+def before_request_handler(database):
     database.connect()
-    database.create_tables([Document, FTSEntry])
 
 
-def before_request_handler():
-    database.connect()
-
-
-def after_request_handler():
+def after_request_handler(database):
     database.close()
 
 
-create_tables()
+CURRENT_BASE_MODEL = SqliteModel
