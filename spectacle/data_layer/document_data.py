@@ -2,20 +2,14 @@
 """
 ORM and data functions for Document
 """
-from peewee import Model, CharField, DateTimeField, TextField, IntegerField
+from peewee import CharField, DateTimeField, TextField, IntegerField
 from playhouse.sqlite_ext import *
 from datetime import datetime
 
-DATABASE = 'documents.db'
-database = SqliteExtDatabase(DATABASE, threadlocals=True)
+from spectacle.data_layer.database_setup import CURRENT_BASE_MODEL, SQLITE_DB
 
 
-class BaseModel(Model):
-    class Meta:
-        database = database
-
-
-class Document(BaseModel):
+class Document(CURRENT_BASE_MODEL):
     title = CharField()
     topic_id = IntegerField()
     content = TextField()
@@ -35,7 +29,7 @@ class FTSEntry(FTSModel):
     content = TextField()
 
     class Meta:
-        database = database
+        database = SQLITE_DB
 
 
 def db_get_document_by_id(doc_id):

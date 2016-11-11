@@ -49,44 +49,50 @@
     </div>
 
     <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
+      <div class="six columns"style="margin-top: 1rem">
         <label for="form_title">Title</label>
         <input class="u-full-width" type="text" placeholder="" id="form_title" value="{{document_data.title}}">
+      </div>
+      <div class="six columns"style="margin-top: 1rem">
+        <label for="form_original_url">Original URL</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_original_url" value="{{document_data.original_url}}" disabled>
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
+      <div class="twelve columns"style="margin-top: 1rem">
         <label for="form_content">Content (automatically extracted)</label>
         <textarea class="u-full-width" placeholder="" id="form_content" rows="10">{{document_data.content}}</textarea>
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
+      <div class="twelve columns"style="margin-top: 1rem">
         <label for="form_summary">Summary</label>
         <textarea class="u-full-width" placeholder="" id="form_summary" rows="5">{{document_data.summary}}</textarea>
       </div>
     </div>
 
     <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
+      <div class="six columns"style="margin-top: 1rem">
         <label for="form_topic_id">Topic ID</label>
         <input class="u-full-width" type="text" placeholder="" id="form_topic_id" value="{{document_data.topic_id}}">
       </div>
-    </div>
 
-    <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
-        <label for="form_original_url">Original URL</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_original_url" value="{{document_data.original_url}}">
+      <div class="six columns"style="margin-top: 1rem">
+        <label for="form_source">Source</label>
+        <input class="u-full-width" type="text" placeholder="" id="form_source" value="{{document_data.source}}">
       </div>
     </div>
 
-    <div class="row" style="margin-top: 1rem">
-      <div class="eight columns"style="margin-top: 1rem">
-        <label for="form_source">Source</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_source" value="{{document_data.source}}">
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 5%">
+        <h4>Document</h4>
+        <object data="/pdf_document/{{document_data.id}}.pdf" type="application/pdf" width="100%" height="700">
+          <iframe src="/pdf_document/{{document_data.id}}.pdf" width="100%" height="700" style="border: none;">
+            This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf_document/{{document_data.id}}.pdf">Download PDF</a>
+          </iframe>
+        </object>
       </div>
     </div>
 
