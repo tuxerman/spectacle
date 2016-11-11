@@ -37,12 +37,13 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {% include 'header.html' %}
+
   <div class="container">
 
     <div class="row">
-      <div class="twelve columns" style="margin-top: 5%">
-        <div class="logo" onclick="location.href='/';"> <h2>Spectacle</h2> </div>
-        <p>Add New Document</p>
+      <div class="twelve columns">
+        <h3>Submit New Document</h3>
       </div>
     </div>
 
@@ -56,7 +57,7 @@
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_summary">Summary</label>
-        <textarea class="u-full-width" placeholder="" id="form_summary"></textarea>
+        <textarea class="u-full-width" placeholder="" id="form_summary" rows="5"></textarea>
       </div>
     </div>
 
@@ -81,14 +82,15 @@
       </div>
     </div>
 
-    <div class="row" style="margin-top: 1rem">
+    <div class="row" style="margin-top: 2rem">
       <div class="three columns"style="margin-top: 1rem">
         <button class="button-primary" id="submit_button">Submit</button>
       </div>
     </div>
 
-    </div>
-    
+  </div>
+
+  {% include 'footer.html' %}
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
