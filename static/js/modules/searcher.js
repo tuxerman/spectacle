@@ -20,10 +20,13 @@ Searcher = (function(){
                 settings.searchResultsDiv.empty();
                 settings.searchResultsPanel.show();
                 settings.homepageFeaturesPanel.hide();
-                $.each(data, function(i, result){
-                    result_doc = result.document;
+                console.log(data);
+                $.each(data.results, function(i, result){
+                    console.log(result)
+                    result_doc_id = result.doc_id;
+                    result_title = result.title;
                     result_snippet = result.snippet;
-                    settings.searchResultsDiv.append('<a href="/document/' + result_doc.id + '"> <h5>' + result_doc.title + '</h5> </a>');
+                    settings.searchResultsDiv.append('<a href="/document/' + result_doc_id + '"> <h5>' + result_title + '</h5> </a>');
                     settings.searchResultsDiv.append("<p>" + result_snippet + "</p>");
                 });
             });

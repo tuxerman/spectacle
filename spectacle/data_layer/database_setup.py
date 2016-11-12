@@ -33,3 +33,26 @@ def after_request_handler(database):
 
 
 CURRENT_BASE_MODEL = SqliteModel
+
+ES_INDEX_MAPPING = {
+    "mappings": {
+        "document": {
+            "_all": {"enabled": False},
+            "properties": {
+                "doc_id": {"type": "integer"},
+                "title": {
+                    "type": "text",
+                    "analyzer": "english"
+                },
+                "content": {
+                    "type": "text",
+                    "analyzer": "english"
+                },
+                "summary": {
+                    "type": "text",
+                    "analyzer": "english",
+                },
+            }
+        }
+    }
+}

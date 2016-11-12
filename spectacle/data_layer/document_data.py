@@ -2,11 +2,11 @@
 """
 ORM and data functions for Document
 """
-from peewee import CharField, DateTimeField, TextField, IntegerField
-from playhouse.sqlite_ext import *
+from peewee import CharField, DateTimeField, TextField, IntegerField, BooleanField
 from datetime import datetime
 
-from spectacle.data_layer.database_setup import CURRENT_BASE_MODEL, SQLITE_DB
+from spectacle.data_layer.database_setup import CURRENT_BASE_MODEL
+from spectacle.data_layer.full_text_search import db_index_document
 
 
 class Document(CURRENT_BASE_MODEL):
@@ -24,14 +24,6 @@ class Document(CURRENT_BASE_MODEL):
         order_by = ('id',)
 
 
-class FTSEntry(FTSModel):
-    entry_id = IntegerField()
-    content = TextField()
-
-    class Meta:
-        database = SQLITE_DB
-
-
 def db_get_document_by_id(doc_id):
     return Document.get(Document.id == doc_id)
 
@@ -47,9 +39,7 @@ def db_publish_document(doc_id):
     doc.date_published = datetime.now()
     doc.save()
     if not already_published:
-        FTSEntry.create(
-            entry_id=doc.id,
-            content='\n'.join((doc.title, doc.content, doc.summary)))
+        db_index_document(doc)
 
 
 def db_add_document(title, topic_id, content, summary, original_url, source):
