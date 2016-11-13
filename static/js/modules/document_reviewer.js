@@ -20,9 +20,9 @@ DocumentReviewer = (function(){
         },
         publishFunction: function (editedDocInfo) {
             $.post(settings.postURL, data=editedDocInfo, function(data) {
-                alert("New document has been published");
-                window.location.href = '/';
             });
+            alert("Publishing process initiated");
+            window.location.href = '/';
         },
         bindUIActions: function() {
             addFunction = this.publishFunction;

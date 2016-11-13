@@ -20,24 +20,22 @@ def download_file(url, filename):
 
 
 def extract_text_from_doc(filename):
-    return '''
-        The Supreme Court has extensive original jurisdiction
-        for the protection of fundamental rights of citizens. It also acts
-        as the court to settle disputes between various governments in the country.
-        As an advisory court, it hears matters which may specifically be referred
-        to it under the Constitution by the President. It also may take cognisance
-        of matters on its own (or 'suo moto'), without anyone drawing its attention.
-    '''
+    try:
+        import textract
+        return textract.process(filename).replace('\n', ' ')
+    except ImportError:
+        return 'Could not extract content from document'
 
 
 def main():
     for doc_id in get_all_unpublished_doc_ids():
         doc = get_document(doc_id)
         if doc.content:
-            print 'Skipping {} ({})'.format(doc.id, doc.title)
+            print 'Skipping id: {}, title: ({})'.format(doc.id, doc.title)
             continue
 
-        downloaded_file_path = download_file(doc.original_url, "{}.pdf".format(doc_id))
+        print 'Processing id: {}, title: {}'.format(doc.id, doc.title)
+        downloaded_file_path = download_file(doc.original_url, '{}.pdf'.format(doc_id))
         edit_document(
             doc_id=doc.id,
             title=doc.title,
