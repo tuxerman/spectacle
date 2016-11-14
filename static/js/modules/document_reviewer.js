@@ -22,7 +22,7 @@ DocumentReviewer = (function(){
             $.post(settings.postURL, data=editedDocInfo, function(data) {
             });
             alert("Publishing process initiated");
-            window.location.href = '/';
+            window.location.href = '/review';
         },
         bindUIActions: function() {
             addFunction = this.publishFunction;

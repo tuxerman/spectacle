@@ -11,7 +11,7 @@ SQLITE_DB = SqliteExtDatabase('documents.db', threadlocals=True)
 MYSQL_DB = MySQLDatabase(
     "documents", host="127.0.0.1", port=3306, user="sriram", passwd="password")
 
-CURRENT_DATABASE = SQLITE_DB
+CURRENT_DATABASE = MYSQL_DB
 
 
 class SqliteModel(Model):

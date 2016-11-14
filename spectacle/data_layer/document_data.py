@@ -29,7 +29,13 @@ def db_get_document_by_id(doc_id):
 
 
 def db_get_all_unpublished_doc_ids():
-    return [doc.id for doc in Document.select().where(Document.published == False)]
+    return [
+        doc.id
+        for doc in Document.select() \
+            .where(Document.published == False) \
+            .order_by(Document.date_added.desc()
+        )
+    ]
 
 
 def db_publish_document(doc_id):

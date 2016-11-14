@@ -23,7 +23,7 @@ def extract_text_from_doc(filename):
     try:
         import textract
         return textract.process(filename).replace('\n', ' ')
-    except ImportError:
+    except Exception:
         return 'Could not extract content from document'
 
 
