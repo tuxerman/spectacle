@@ -10,6 +10,7 @@ from spectacle.data_layer.document_data import db_add_document
 from spectacle.data_layer.document_data import db_edit_document
 from spectacle.data_layer.document_data import db_publish_document
 from spectacle.data_layer.document_data import db_get_all_unpublished_doc_ids
+from spectacle.data_layer.document_data import db_get_documents_submitted_by_user
 
 
 class Document(namedtuple(
@@ -67,8 +68,8 @@ def get_all_unpublished_doc_ids():
     return db_get_all_unpublished_doc_ids()
 
 
-def add_document(title, topic_id, content, summary, original_url, source):
-    doc_id = db_add_document(title, topic_id, content, summary, original_url, source)
+def add_document(title, topic_id, content, summary, original_url, source, user_id=None):
+    doc_id = db_add_document(title, topic_id, content, summary, original_url, source, user_id)
     return doc_id
 
 
@@ -77,6 +78,13 @@ def edit_document(doc_id, title, topic_id, content, summary, original_url, sourc
     return None
 
 
-def publish_document(doc_id):
-    db_publish_document(doc_id)
+def publish_document(doc_id, user_id=None):
+    db_publish_document(doc_id, user_id=None)
     return None
+
+
+def get_submitted_document_ids_by_user(user_id):
+    return [
+        doc.id
+        for doc in db_get_documents_submitted_by_user(user_id)
+    ]

@@ -2,7 +2,8 @@ from flask import jsonify, render_template, request
 import spectacle.flightdeck.document as document_logic
 from spectacle.flightdeck.search import search_documents
 from app import app
-from flask import abort
+from flask import abort, flash
+from flask.ext.stormpath import User, login_required, login_user, logout_user, user
 
 
 @app.route('/', methods=['GET'])
@@ -16,6 +17,7 @@ def www_show_submit():
 
 
 @app.route('/review', methods=['GET'])
+@login_required
 def www_show_review_dashboard():
 
     def doc_review_data(doc):
@@ -36,6 +38,36 @@ def www_show_review_dashboard():
     )
 
 
+@app.route('/dashboard', methods=['GET'])
+@login_required
+def www_show_user_dashboard():
+    def doc_submission_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'date_published': (
+                doc.date_published.strftime("%d %b %Y, %H:%M")
+                if doc.published else 'Pending'
+            ),
+            'source': doc.source
+        }
+
+    user_id = user.email
+
+    # TODO: Why are we calling get_doc() on IDs which were filtered in the first place?
+    docs_submitted = [
+        doc_submission_data(document_logic.get_document(doc_id))
+        for doc_id in
+        document_logic.get_submitted_document_ids_by_user(user_id)
+    ]
+    return render_template(
+        'user_dashboard.html',
+        user_id=user_id,
+        docs_submitted=docs_submitted
+    )
+
+
 @app.route('/document/<int:docid>', methods=['GET'])
 def www_view_document(docid):
     doc_data = document_logic.get_published_document(docid)
@@ -48,6 +80,7 @@ def www_view_document(docid):
 
 
 @app.route('/document/review/<int:docid>', methods=['GET'])
+@login_required
 def www_review_document(docid):
     doc_data = document_logic.get_document(docid)
     if doc_data:
@@ -79,7 +112,8 @@ def submit_document():
         content='',  # content
         summary=doc_data['summary'],
         original_url=doc_data['original_url'],
-        source=doc_data['source']
+        source=doc_data['source'],
+        user_id=user.email
     )
     return jsonify({'id': new_doc_id})
 
@@ -96,7 +130,7 @@ def publish_document(docid):
         original_url=doc_data['original_url'],
         source=doc_data['source']
     )
-    document_logic.publish_document(docid)
+    document_logic.publish_document(docid, user_id=user.email)
     return jsonify({'success': True})
 
 

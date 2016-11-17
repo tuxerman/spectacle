@@ -5,9 +5,19 @@ Main app
 
 import os
 from flask import Flask
+from flask.ext.stormpath import StormpathManager
+
 
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
-DEBUG = False
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
+
+app.config['SECRET_KEY'] = 'TODOsomeprivateflaskstringhere'
+app.config['STORMPATH_API_KEY_ID'] = 'id'
+app.config['STORMPATH_API_KEY_SECRET'] = 'secret'
+app.config['STORMPATH_APPLICATION'] = 'spectacle'
+
+stormpath_manager = StormpathManager(app)
+
 app.config.from_object(__name__)
