@@ -6,12 +6,22 @@ from playhouse.sqlite_ext import SqliteExtDatabase
 from peewee import MySQLDatabase
 from peewee import Model
 
+from config import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB
+from config import SQLITE_FILEPATH
+from config import CURRENT_DATABASE_TYPE
 
-SQLITE_DB = SqliteExtDatabase('documents.db', threadlocals=True)
+
+SQLITE_DB = SqliteExtDatabase(SQLITE_FILEPATH, threadlocals=True)
 MYSQL_DB = MySQLDatabase(
-    "documents", host="127.0.0.1", port=3306, user="sriram", passwd="password")
+    MYSQL_DB,
+    host=MYSQL_HOST,
+    port=MYSQL_PORT,
+    user=MYSQL_USER,
+    passwd=MYSQL_PASSWD,
+    charset='utf8mb4'
+)
 
-CURRENT_DATABASE = MYSQL_DB
+CURRENT_DATABASE = MYSQL_DB if CURRENT_DATABASE_TYPE == 'mysql' else SQLITE_DB
 
 
 class SqliteModel(Model):
@@ -24,15 +34,7 @@ class MySQLModel(Model):
         database = MYSQL_DB
 
 
-def before_request_handler(database):
-    database.connect()
-
-
-def after_request_handler(database):
-    database.close()
-
-
-CURRENT_BASE_MODEL = SqliteModel
+CURRENT_BASE_MODEL = MySQLModel if CURRENT_DATABASE_TYPE == 'mysql' else SqliteModel
 
 ES_INDEX_MAPPING = {
     "mappings": {

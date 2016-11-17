@@ -5,20 +5,17 @@ ORM and data functions for Document
 import simplejson as json
 from elasticsearch import Elasticsearch
 
+from config import ES_HOST, ES_PORT, ES_INDEX
 from spectacle.data_layer.database_setup import ES_INDEX_MAPPING
 
 
-HOST = 'localhost'
-PORT = 9200
-INDEX = 'testindex_02'
-
 # Define a default Elasticsearch client
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
-es.indices.create(index=INDEX, ignore=400, body=json.dumps(ES_INDEX_MAPPING))
+es = Elasticsearch([{'host': ES_HOST, 'port': ES_PORT}])
+es.indices.create(index=ES_INDEX, ignore=400, body=json.dumps(ES_INDEX_MAPPING))
 
 
 def db_index_document(document):
-    es.index(index=INDEX,
+    es.index(index=ES_INDEX,
              doc_type='document',
              id=document.id,
              body=_es_doc_from_document(document)
@@ -68,7 +65,7 @@ def _get_highlight_from_result(result):
 
 
 def db_search_documents(query_string):
-    response = es.search(index=INDEX, body=_fuzzy_search_query(query_string))
+    response = es.search(index=ES_INDEX, body=_fuzzy_search_query(query_string))
     num_results = response['hits']['total']
     results = response['hits']['hits']
     search_results = {

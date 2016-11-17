@@ -8,8 +8,8 @@ from elasticsearch import Elasticsearch
 from spectacle.data_layer.database_setup import CURRENT_DATABASE
 from spectacle.data_layer.document_data import Document
 from spectacle.data_layer.database_setup import ES_INDEX_MAPPING
-from spectacle.data_layer.full_text_search import INDEX as FTS_INDEX
-from spectacle.data_layer.full_text_search import HOST, PORT
+
+from config import ES_INDEX, ES_HOST, ES_PORT
 
 
 def delete_fts_index(es_host, es_port, es_index):
@@ -33,5 +33,5 @@ def create_fts_index(es_host, es_port, es_index, es_index_mapping):
 
 delete_primary_tables()
 create_primary_tables(CURRENT_DATABASE)
-delete_fts_index(HOST, PORT, FTS_INDEX)
-create_fts_index(HOST, PORT, FTS_INDEX, ES_INDEX_MAPPING)
+delete_fts_index(ES_HOST, ES_PORT, ES_INDEX)
+create_fts_index(ES_HOST, ES_PORT, ES_INDEX, ES_INDEX_MAPPING)

@@ -5,7 +5,7 @@ ORM and data functions for Document
 from peewee import CharField, DateTimeField, TextField, IntegerField, BooleanField
 from datetime import datetime
 
-from spectacle.data_layer.database_setup import CURRENT_BASE_MODEL
+from spectacle.data_layer.database_definitions import CURRENT_BASE_MODEL
 from spectacle.data_layer.full_text_search import db_index_document
 
 
