@@ -6,7 +6,7 @@ import simplejson as json
 from elasticsearch import Elasticsearch
 
 from config import ES_HOST, ES_PORT, ES_INDEX
-from spectacle.data_layer.database_setup import ES_INDEX_MAPPING
+from spectacle.data_layer.database_definitions import ES_INDEX_MAPPING
 
 
 # Define a default Elasticsearch client
