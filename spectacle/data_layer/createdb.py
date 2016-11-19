@@ -11,6 +11,8 @@ from spectacle.data_layer.database_setup import ES_INDEX_MAPPING
 from spectacle.data_layer.full_text_search import INDEX as FTS_INDEX
 from spectacle.data_layer.full_text_search import HOST, PORT
 
+PRIMARY_TABLES = [SubmittedDocument, PublishedDocument, Document]
+
 
 def delete_fts_index(es_host, es_port, es_index):
     es = Elasticsearch([{'host': es_host, 'port': es_port}])
@@ -19,11 +21,12 @@ def delete_fts_index(es_host, es_port, es_index):
 
 def create_primary_tables(database):
     database.connect()
-    database.create_tables([Document, SubmittedDocument, PublishedDocument])
+    database.create_tables(PRIMARY_TABLES)
 
 
 def delete_primary_tables():
-    Document.drop_table(fail_silently=True)
+    for table in PRIMARY_TABLES:
+        table.drop_table(fail_silently=True)
 
 
 def create_fts_index(es_host, es_port, es_index, es_index_mapping):

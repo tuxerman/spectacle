@@ -105,3 +105,10 @@ def db_get_documents_submitted_by_user(user_id):
         doc
         for doc in SubmittedDocument.select().where(SubmittedDocument.user_id == user_id)
     ]
+
+
+def db_get_documents_published_by_user(user_id):
+    return [
+        doc
+        for doc in PublishedDocument.select().where(PublishedDocument.user_id == user_id)
+    ]

@@ -32,7 +32,7 @@ def after_request_handler(database):
     database.close()
 
 
-CURRENT_BASE_MODEL = SqliteModel
+CURRENT_BASE_MODEL = MySQLModel if CURRENT_DATABASE == MYSQL_DB else SqliteModel
 
 ES_INDEX_MAPPING = {
     "mappings": {

@@ -37,12 +37,15 @@
 
     <div class="row">
       <div class="twelve columns">
-        <h3> {{user_id}}: Submitted Documents </h3>
+        <h3> {{user_info.username}}: Dashboard </h3>
       </div>
     </div>
 
     {% if docs_submitted %}
     <div class="row">
+      <div class="twelve columns">
+        <h3> Submitted Documents </h3>
+      </div>
       <div class="twelve columns" style="margin-top: 5%">
         <table class="u-full-width">
         <thead>
@@ -69,6 +72,36 @@
     {% else %}
     <p>You haven't submitted anything yet!</p>
     <p><a href="/submit">Let's get started?</a></p>
+    {% endif %}
+
+    {% if docs_published %}
+    <div class="row">
+      <div class="twelve columns">
+        <h3> Reviewed Documents </h3>
+      </div>
+      <div class="twelve columns" style="margin-top: 5%">
+        <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date Added</th>
+            <th>Source</th>
+            <th>Date Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs_published %}
+          <tr>
+            <td>{{doc.title}}</td>
+            <td>{{doc.date_added}}</td>
+            <td>{{doc.source}}</td>
+             <td>{{doc.date_published}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
     {% endif %}
 
   </div>

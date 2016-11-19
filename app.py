@@ -14,8 +14,7 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 
 app.config['SECRET_KEY'] = 'TODOsomeprivateflaskstringhere'
-app.config['STORMPATH_API_KEY_ID'] = 'id'
-app.config['STORMPATH_API_KEY_SECRET'] = 'secret'
+app.config['STORMPATH_API_KEY_FILE'] = '.spectacle_apikey'
 app.config['STORMPATH_APPLICATION'] = 'spectacle'
 
 stormpath_manager = StormpathManager(app)
