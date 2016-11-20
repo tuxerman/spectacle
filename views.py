@@ -3,11 +3,26 @@ import spectacle.flightdeck.document as document_logic
 from spectacle.flightdeck.search import search_documents
 from app import app
 from flask import abort
+from flask.ext.stormpath import groups_required, login_required, user
+
+
+def _user_info_dict(current_user):
+    user_info = {'logged_in': False, 'user_id': None, 'is_moderator': False}
+    if current_user.is_authenticated:
+        user_info['username'] = current_user.username
+        user_info['logged_in'] = True
+        user_info['is_moderator'] = (
+            'moderators' in (group.name for group in current_user.groups)
+        )
+    return user_info
 
 
 @app.route('/', methods=['GET'])
 def www_show_home():
-    return render_template('homepage.html')
+    return render_template(
+        'homepage.html',
+        user_info=_user_info_dict(user)
+    )
 
 
 @app.route('/submit', methods=['GET'])
@@ -16,6 +31,7 @@ def www_show_submit():
 
 
 @app.route('/review', methods=['GET'])
+@groups_required(['moderators'])
 def www_show_review_dashboard():
 
     def doc_review_data(doc):
@@ -32,7 +48,46 @@ def www_show_review_dashboard():
     ]
     return render_template(
         'review_dashboard.html',
-        docs_to_review=docs_to_review
+        docs_to_review=docs_to_review,
+        user_info=_user_info_dict(user)
+    )
+
+
+@app.route('/dashboard', methods=['GET'])
+@login_required
+def www_show_user_dashboard():
+    def doc_submission_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'date_published': (
+                doc.date_published.strftime("%d %b %Y, %H:%M")
+                if doc.published else 'Pending'
+            ),
+            'source': doc.source
+        }
+
+    user_info = _user_info_dict(user)
+    user_id = user_info['username']
+    docs_submitted, docs_published = [], []
+    # TODO: Why are we calling get_doc() on IDs which were filtered in the first place?
+    docs_submitted = [
+        doc_submission_data(document_logic.get_document(doc_id))
+        for doc_id in
+        document_logic.get_submitted_document_ids_by_user(user_id)
+    ]
+    if user_info['is_moderator']:
+        docs_published = [
+            doc_submission_data(document_logic.get_document(doc_id))
+            for doc_id in
+            document_logic.get_published_document_ids_by_user(user_id)
+        ]
+    return render_template(
+        'user_dashboard.html',
+        docs_submitted=docs_submitted,
+        docs_published=docs_published,
+        user_info=user_info,
     )
 
 
@@ -48,6 +103,8 @@ def www_view_document(docid):
 
 
 @app.route('/document/review/<int:docid>', methods=['GET'])
+@login_required
+@groups_required(['moderators'])
 def www_review_document(docid):
     doc_data = document_logic.get_document(docid)
     if doc_data:
@@ -72,6 +129,7 @@ def search():
 
 @app.route('/document/submit', methods=['POST'])
 def submit_document():
+    user_info = _user_info_dict(user)
     doc_data = request.form
     new_doc_id = document_logic.add_document(
         title=doc_data['title'],
@@ -79,13 +137,16 @@ def submit_document():
         content='',  # content
         summary=doc_data['summary'],
         original_url=doc_data['original_url'],
-        source=doc_data['source']
+        source=doc_data['source'],
+        user_id=user_info['username']
     )
     return jsonify({'id': new_doc_id})
 
 
 @app.route('/document/publish/<int:docid>', methods=['POST'])
+@groups_required(['moderators'])
 def publish_document(docid):
+    user_info = _user_info_dict(user)
     doc_data = request.form
     document_logic.edit_document(
         docid,
@@ -96,7 +157,7 @@ def publish_document(docid):
         original_url=doc_data['original_url'],
         source=doc_data['source']
     )
-    document_logic.publish_document(docid)
+    document_logic.publish_document(docid, user_id=user_info['username'])
     return jsonify({'success': True})
 
 

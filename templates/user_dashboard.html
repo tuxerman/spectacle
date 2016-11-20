@@ -26,14 +26,6 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/modules/searcher.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/modules/popular.js') }}"></script>
-  <script>
-    $(document).ready(function() {
-        Searcher.init();
-        // PopularTopics.init();
-    });
-  </script>
 </head>
 <body>
 
@@ -41,62 +33,79 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {% include 'header.html' %}
 
-  <div class="container" style="margin-top: 5%">
+  <div class="container">
+
     <div class="row">
       <div class="twelve columns">
-        <h5>Welcome!</h5>
+        <h3> {{user_info.username}}: Dashboard </h3>
       </div>
     </div>
 
-    <div class="row" style="margin-top: 1rem">
-      <div class="nine columns">
-        <input class="u-full-width" type="text" placeholder="" id="search_string">
+    {% if docs_submitted %}
+    <div class="row">
+      <div class="twelve columns">
+        <h3> Submitted Documents </h3>
       </div>
-      <div class="three columns">
-        <button class="button-primary" id="search_button">Search</button>
-      </div>
-    </div>
-
-    <div id="search_results_panel" class="row" hidden>
       <div class="twelve columns" style="margin-top: 5%">
-        <h4>Search Results</h4>
-      </div>
-      <div id="search_results" class="twelve columns">
+        <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date Added</th>
+            <th>Source</th>
+            <th>Date Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs_submitted %}
+          <tr>
+            <td>{{doc.title}}</td>
+            <td>{{doc.date_added}}</td>
+            <td>{{doc.source}}</td>
+             <td>{{doc.date_published}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       </div>
     </div>
+    {% else %}
+    <p>You haven't submitted anything yet!</p>
+    <p><a href="/submit">Let's get started?</a></p>
+    {% endif %}
 
-    <div id="homepage-features-panel" class="row" style="margin-top: 10%">
-      <div class="one-third column homepage-feature" onclick="location.href='/submit';">
-        <h4>Submit</h4>
-        <p>Submit a document to be indexed</p>
+    {% if docs_published %}
+    <div class="row">
+      <div class="twelve columns">
+        <h3> Reviewed Documents </h3>
       </div>
-
-      <!-- STUFF TO SHOW IF A USER IS LOGGED IN -->
-      {% if user_info['logged_in'] %}
-      <div class="one-third column homepage-feature" onclick="location.href='/review';">
-        <h4>Review</h4>
-        <p>Review submitted documents and publish them</p>
-      </div>
-      <div class="one-third column homepage-feature" onclick="location.href='/dashboard';">
-        <h4>User Dashboard</h4>
-        <p>View submitted and reviewed documents</p>
-      </div>
-      {% endif %}
-    
-  </div>
-
-<!--     <div class="row">
       <div class="twelve columns" style="margin-top: 5%">
-        <h4>Popular topics</h4>
+        <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date Added</th>
+            <th>Source</th>
+            <th>Date Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs_published %}
+          <tr>
+            <td>{{doc.title}}</td>
+            <td>{{doc.date_added}}</td>
+            <td>{{doc.source}}</td>
+             <td>{{doc.date_published}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       </div>
-      <div id="popular_topics" class="twelve columns" style="margin-top: 5%">
-      </div>
-    </div> -->
+    </div>
+    {% endif %}
 
   </div>
-  
   {% include 'footer.html' %}
-
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
