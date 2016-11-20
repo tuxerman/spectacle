@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # Database options
-CURRENT_DATABASE_TYPE = 'mysql'
+CURRENT_DATABASE_TYPE = 'sqlite'
 
 # Sqlite options
 SQLITE_FILEPATH = 'documents.db'
