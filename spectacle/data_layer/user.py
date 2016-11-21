@@ -16,6 +16,7 @@ class User(CURRENT_BASE_MODEL, UserMixin):
     username = CharField(primary_key=True, unique=True)
     password_hash = TextField()
     verified = BooleanField()
+    is_moderator = BooleanField()
     date_added = DateTimeField()
 
     class Meta:
@@ -30,13 +31,6 @@ class User(CURRENT_BASE_MODEL, UserMixin):
 
 
 def db_get_user(userid):
-    """
-    Static method to search the database and see if userid exists.  If it
-    does exist then return a User Object.  If not then return None as
-    required by Flask-Login.
-    """
-    # For this example the USERS database is a list consisting of
-    # (user,hased_password) of users
     return User.get(User.username == userid)
 
 
@@ -45,8 +39,17 @@ def db_add_user(username, password_hash):
         username=username,
         password_hash=password_hash,
         verified=False,
+        is_moderator=False,
         date_added=datetime.now(),
     )
+
+
+def db_promote_user(username):
+    user = User.get(username=username)
+    if not user:
+        raise
+    user.is_moderator = True
+    user.save()
 
 
 def hash_pass(password):

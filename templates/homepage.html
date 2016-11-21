@@ -31,7 +31,6 @@
   <script>
     $(document).ready(function() {
         Searcher.init();
-        // PopularTopics.init();
     });
   </script>
 </head>
@@ -73,10 +72,12 @@
 
       <!-- STUFF TO SHOW IF A USER IS LOGGED IN -->
       {% if user_info['logged_in'] %}
-      <div class="one-third column homepage-feature" onclick="location.href='/review';">
-        <h4>Review</h4>
-        <p>Review submitted documents and publish them</p>
-      </div>
+        {% if user_info['is_moderator'] %}
+        <div class="one-third column homepage-feature" onclick="location.href='/review';">
+          <h4>Review</h4>
+          <p>Review submitted documents and publish them</p>
+        </div>
+        {% endif %}
       <div class="one-third column homepage-feature" onclick="location.href='/dashboard';">
         <h4>User Dashboard</h4>
         <p>View submitted and reviewed documents</p>
@@ -84,14 +85,6 @@
       {% endif %}
     
   </div>
-
-<!--     <div class="row">
-      <div class="twelve columns" style="margin-top: 5%">
-        <h4>Popular topics</h4>
-      </div>
-      <div id="popular_topics" class="twelve columns" style="margin-top: 5%">
-      </div>
-    </div> -->
 
   </div>
   

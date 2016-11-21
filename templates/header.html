@@ -9,9 +9,13 @@
 
     <div id="nav" class="eight columns u-pull-right">
       <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contribute</a></li>
+        {% if user_info['logged_in'] %}
+        <li><a href="/logout">Logout {{user_info.username}}</a></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        {% endif %}
         <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
       </ul>
     </div>
 

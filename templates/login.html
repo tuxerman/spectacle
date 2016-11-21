@@ -32,14 +32,36 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {% include 'header.html' %}
-
+  <div class="container" style="margin-top: 5%">
   <form action="" method="post">
-        <input type="text" placeholder="Username" name="username" value="{{
-          request.form.username }}">
-         <input type="password" placeholder="Password" name="password" value="{{
-          request.form.password }}">
-        <input class="button-primary" type="submit" value="Login">
+    <div class="row" style="margin-top: 2rem">
+      <div class="six columns"style="margin-top: 1rem">
+        <h3>Sign in</h3>
+        <p>Don't have an account? <a href="/register">Create one!</a>  It's free.
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 2rem">
+      <div class="six columns"style="margin-top: 1rem">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="" name="username" value="{{request.form.username }}">
+      </div>
+    </div>
+    <div class="row" style="margin-top: 2rem">
+      <div class="six columns"style="margin-top: 1rem">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="" name="password" value="{{ request.form.password }}">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 2rem">
+      <div class="three columns"style="margin-top: 1rem">
+        <button class="button-primary" type="submit">Login</button>
+      </div>
+    </div>
+
   </form>
+  </div>
 
 <!-- 
   <div class="row" style="margin-top: 2rem">

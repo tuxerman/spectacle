@@ -3,17 +3,8 @@ import spectacle.flightdeck.document as document_logic
 from spectacle.flightdeck.search import search_documents
 from app import app
 from flask import abort
-from flask_login import current_user, login_required
-
-
-def _user_info_dict():
-    user_info = {'logged_in': False, 'user_id': None}
-    import pdb
-    pdb.set_trace()
-    if current_user.is_authenticated:
-        user_info['username'] = current_user.username
-        user_info['logged_in'] = True
-    return user_info
+from flask_login import login_required
+from user_routes import moderators_only, _user_info_dict
 
 
 @app.route('/', methods=['GET'])
@@ -26,11 +17,14 @@ def www_show_home():
 
 @app.route('/submit', methods=['GET'])
 def www_show_submit():
-    return render_template('submit_document.html')
+    return render_template(
+        'submit_document.html',
+        user_info=_user_info_dict)
 
 
 @app.route('/review', methods=['GET'])
 @login_required
+@moderators_only
 def www_show_review_dashboard():
 
     def doc_review_data(doc):
@@ -96,7 +90,8 @@ def www_view_document(docid):
     if doc_data:
         return render_template(
             'view_document.html',
-            document_data=doc_data)
+            document_data=doc_data,
+            user_info=_user_info_dict)
     else:
         abort(404)
 
@@ -108,7 +103,8 @@ def www_review_document(docid):
     if doc_data:
         return render_template(
             'review_document.html',
-            document_data=doc_data)
+            document_data=doc_data,
+            user_info=_user_info_dict)
     else:
         abort(404)
 
