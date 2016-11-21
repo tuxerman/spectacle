@@ -1,17 +1,21 @@
-from flask import jsonify, render_template, request
-import spectacle.flightdeck.document as document_logic
-from spectacle.flightdeck.search import search_documents
+# -*- coding: UTF-8 -*-
+"""
+WWW views
+"""
 from app import app
+from flask import render_template
 from flask import abort
 from flask_login import login_required
-from user_routes import moderators_only, _user_info_dict
+
+import spectacle.document.logic as document_logic
+from spectacle.user.utils import moderators_only, get_current_user_info
 
 
 @app.route('/', methods=['GET'])
 def www_show_home():
     return render_template(
         'homepage.html',
-        user_info=_user_info_dict()
+        user_info=get_current_user_info()
     )
 
 
@@ -19,7 +23,7 @@ def www_show_home():
 def www_show_submit():
     return render_template(
         'submit_document.html',
-        user_info=_user_info_dict)
+        user_info=get_current_user_info())
 
 
 @app.route('/review', methods=['GET'])
@@ -42,7 +46,7 @@ def www_show_review_dashboard():
     return render_template(
         'review_dashboard.html',
         docs_to_review=docs_to_review,
-        user_info=_user_info_dict()
+        user_info=get_current_user_info()
     )
 
 
@@ -61,7 +65,7 @@ def www_show_user_dashboard():
             'source': doc.source
         }
 
-    user_info = _user_info_dict()
+    user_info = get_current_user_info()
     user_id = user_info['username']
     docs_submitted, docs_published = [], []
     # TODO: Why are we calling get_doc() on IDs which were filtered in the first place?
@@ -91,7 +95,7 @@ def www_view_document(docid):
         return render_template(
             'view_document.html',
             document_data=doc_data,
-            user_info=_user_info_dict)
+            user_info=get_current_user_info())
     else:
         abort(404)
 
@@ -104,7 +108,7 @@ def www_review_document(docid):
         return render_template(
             'review_document.html',
             document_data=doc_data,
-            user_info=_user_info_dict)
+            user_info=get_current_user_info())
     else:
         abort(404)
 
@@ -113,53 +117,3 @@ def www_review_document(docid):
 def get_pdf(filename):
     # https://gist.github.com/jessejlt/1306827 for tips on downloadable PDFs
     return app.send_static_file('pdf/' + filename)
-
-
-@app.route('/document/search', methods=['GET'])
-def search():
-    search_string = request.args.get('query')
-    return jsonify(search_documents(search_string))
-
-
-@app.route('/document/submit', methods=['POST'])
-def submit_document():
-    user_info = _user_info_dict()
-    doc_data = request.form
-    new_doc_id = document_logic.add_document(
-        title=doc_data['title'],
-        topic_id=doc_data['topic_id'],
-        content='',  # content
-        summary=doc_data['summary'],
-        original_url=doc_data['original_url'],
-        source=doc_data['source'],
-        user_id=user_info['username']
-    )
-    return jsonify({'id': new_doc_id})
-
-
-@app.route('/document/publish/<int:docid>', methods=['POST'])
-def publish_document(docid):
-    user_info = _user_info_dict()
-    doc_data = request.form
-    document_logic.edit_document(
-        docid,
-        title=doc_data['title'],
-        topic_id=doc_data['topic_id'],
-        content=doc_data['content'],
-        summary=doc_data['summary'],
-        original_url=doc_data['original_url'],
-        source=doc_data['source']
-    )
-    document_logic.publish_document(docid, user_id=user_info['username'])
-    return jsonify({'success': True})
-
-
-@app.route('/popular', methods=['GET'])
-def popular():
-    return jsonify([
-        {'title': 'List of somethings for 2016', 'id': 2},
-        {'title': 'List of something elses for 2015', 'id': 5},
-        {'title': 'Goings on for XYZ', 'id': 9},
-        {'title': 'Proceedings of the Society for P.T.O.T.O.T', 'id': 13},
-        {'title': 'Whos Who of What', 'id': 10},
-    ])

@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 """
-Script to extract text from PDF and add it to the contents
+Fill primary DB with a bunch of submitted documents
 """
-from spectacle.flightdeck.document import add_document
+from spectacle.document.logic import add_document
 
 
 def generate_dummy_data():
@@ -24,6 +24,7 @@ def generate_dummy_data():
             'original_url': 'https://ocw.mit.edu/courses/physics/8-04-quantum-physics-i-spring-2013/lecture-videos/lecture-15/H5m39G-FAwE.pdf',
             'source': 'MIT OCW'
         },
+        # TODO: The following fail in MySQL for some reason connected with unicode compatibility
         # {
         #     'title': 'Public Transport modal capacities and costs',
         #     'topic_id': 200,

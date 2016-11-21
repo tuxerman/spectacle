@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
 """
-ORM and data functions for Document
+ORM and data functions for ElasticSearch FTS Index
 """
 import simplejson as json
 from elasticsearch import Elasticsearch
 
 from config import ES_HOST, ES_PORT, ES_INDEX
-from spectacle.data_layer.database_definitions import ES_INDEX_MAPPING
+from spectacle.database_definitions import ES_INDEX_MAPPING
 
 
 # Define a default Elasticsearch client

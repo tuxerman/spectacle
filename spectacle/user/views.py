@@ -1,8 +1,12 @@
-from functools import wraps
+# -*- coding: UTF-8 -*-
+"""
+Views related to users, logins, sessions, etc.
+"""
 from flask import jsonify, render_template, request
 from app import app
 from flask_login import login_required, current_user, login_user, logout_user, redirect
-from spectacle.data_layer.user import hash_pass, db_get_user
+from spectacle.user.model import hash_pass, db_get_user
+from spectacle.user.utils import get_current_user_info
 from app import login_serializer, login_manager
 
 
@@ -31,7 +35,7 @@ def login_page():
             login_user(user, remember=True)
             return redirect(request.args.get("next") or "/")
 
-    return render_template("login.html", user_info=_user_info_dict())
+    return render_template("login.html", user_info=get_current_user_info())
 
 
 @app.route("/restricted/")
@@ -88,21 +92,3 @@ def load_token(token):
     if user and password_hash == user.password_hash:
         return user
     return None
-
-
-def _user_info_dict():
-    user_info = {'logged_in': False, 'user_id': None, 'is_moderator': False}
-    if current_user.is_authenticated:
-        user_info['username'] = current_user.username
-        user_info['logged_in'] = True
-        user_info['is_moderator'] = current_user.is_moderator
-    return user_info
-
-
-def moderators_only(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if not current_user.is_moderator:
-            return redirect('/login')
-        return func(*args, **kwargs)
-    return wrapper

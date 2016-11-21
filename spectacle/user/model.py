@@ -9,7 +9,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from app import app, login_serializer
 
-from spectacle.data_layer.database_definitions import CURRENT_BASE_MODEL
+from spectacle.database_definitions import CURRENT_BASE_MODEL
 
 
 class User(CURRENT_BASE_MODEL, UserMixin):

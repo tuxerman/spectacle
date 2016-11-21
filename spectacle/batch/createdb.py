@@ -1,14 +1,14 @@
 # -*- coding: UTF-8 -*-
 """
-Create table
+Delete all existing tables and create new ones
 """
 import simplejson as json
 from elasticsearch import Elasticsearch
 
-from spectacle.data_layer.database_setup import CURRENT_DATABASE
-from spectacle.data_layer.document_data import Document, SubmittedDocument, PublishedDocument
-from spectacle.data_layer.user import User, db_add_user, hash_pass, db_promote_user
-from spectacle.data_layer.database_setup import ES_INDEX_MAPPING
+from spectacle.database_definitions import CURRENT_DATABASE
+from spectacle.document.model import Document, SubmittedDocument, PublishedDocument
+from spectacle.user.model import User, db_add_user, hash_pass, db_promote_user
+from spectacle.database_definitions import ES_INDEX_MAPPING
 
 from config import ES_INDEX, ES_HOST, ES_PORT
 
@@ -41,8 +41,9 @@ def create_fts_index(es_host, es_port, es_index, es_index_mapping):
     es.indices.create(index=es_index, ignore=400, body=json.dumps(es_index_mapping))
 
 
-delete_primary_tables()
-create_primary_tables(CURRENT_DATABASE)
-create_users()
-delete_fts_index(ES_HOST, ES_PORT, ES_INDEX)
-create_fts_index(ES_HOST, ES_PORT, ES_INDEX, ES_INDEX_MAPPING)
+if __name__ == '__main__':
+    delete_primary_tables()
+    create_primary_tables(CURRENT_DATABASE)
+    create_users()
+    delete_fts_index(ES_HOST, ES_PORT, ES_INDEX)
+    create_fts_index(ES_HOST, ES_PORT, ES_INDEX, ES_INDEX_MAPPING)

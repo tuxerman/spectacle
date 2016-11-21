@@ -5,13 +5,13 @@ The Document class and associated globals
 
 from collections import namedtuple
 
-from spectacle.data_layer.document_data import db_get_document_by_id
-from spectacle.data_layer.document_data import db_add_document
-from spectacle.data_layer.document_data import db_edit_document
-from spectacle.data_layer.document_data import db_publish_document
-from spectacle.data_layer.document_data import db_get_all_unpublished_doc_ids
-from spectacle.data_layer.document_data import db_get_documents_published_by_user
-from spectacle.data_layer.document_data import db_get_documents_submitted_by_user
+from spectacle.document.model import db_get_document_by_id
+from spectacle.document.model import db_add_document
+from spectacle.document.model import db_edit_document
+from spectacle.document.model import db_publish_document
+from spectacle.document.model import db_get_all_unpublished_doc_ids
+from spectacle.document.model import db_get_documents_published_by_user
+from spectacle.document.model import db_get_documents_submitted_by_user
 
 
 class Document(namedtuple(

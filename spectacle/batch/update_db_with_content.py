@@ -5,9 +5,9 @@ Script to extract text from PDF and add it to the contents
 import os
 import urllib
 
-from spectacle.flightdeck.document import edit_document
-from spectacle.flightdeck.document import get_all_unpublished_doc_ids
-from spectacle.flightdeck.document import get_document
+from spectacle.document.logic import edit_document
+from spectacle.document.logic import get_all_unpublished_doc_ids
+from spectacle.document.logic import get_document
 
 
 DOWNLOAD_DIR = "static/pdf/"

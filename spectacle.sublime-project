@@ -11,7 +11,9 @@
 	"folders":
 	[
 		{
-			"path": "."
+			"path": ".",
+			"folder_exclude_patterns": ["venv"],
+			"file_exclude_patterns": [".*", "*.pyc"]
 		}
 	],
 	"settings":
