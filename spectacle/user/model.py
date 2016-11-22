@@ -15,6 +15,7 @@ from spectacle.database_definitions import CURRENT_BASE_MODEL
 class User(CURRENT_BASE_MODEL, UserMixin):
     username = CharField(primary_key=True, unique=True)
     password_hash = TextField()
+    email = CharField()
     verified = BooleanField()
     is_moderator = BooleanField()
     date_added = DateTimeField()
@@ -31,13 +32,17 @@ class User(CURRENT_BASE_MODEL, UserMixin):
 
 
 def db_get_user(userid):
-    return User.get(User.username == userid)
+    try:
+        return User.get(User.username == userid)
+    except User.DoesNotExist:
+        return None
 
 
-def db_add_user(username, password_hash):
+def db_add_user(username, password_hash, email):
     User.create(
         username=username,
         password_hash=password_hash,
+        email=email,
         verified=False,
         is_moderator=False,
         date_added=datetime.now(),

@@ -16,8 +16,6 @@ app = Flask(__name__)
 app.config['DEBUG'] = False
 
 app.config['SECRET_KEY'] = 'TODOsomeprivateflaskstringhere'
-app.config['STORMPATH_API_KEY_FILE'] = '.spectacle_apikey'
-app.config['STORMPATH_APPLICATION'] = 'spectacle'
 
 app.config.from_object(__name__)
 

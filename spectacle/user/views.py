@@ -2,7 +2,7 @@
 """
 Views related to users, logins, sessions, etc.
 """
-from flask import jsonify, render_template, request
+from flask import flash, jsonify, render_template, request
 from app import app
 from flask_login import login_required, current_user, login_user, logout_user, redirect
 from spectacle.user.model import hash_pass, db_get_user
@@ -16,6 +16,7 @@ def logout_page():
     Web Page to Logout User, then Redirect them to Index Page.
     """
     logout_user()
+    flash('Logged out.')
     return redirect("/")
 
 
@@ -34,6 +35,7 @@ def login_page():
         if user and hash_pass(request.form['password']) == user.password_hash:
             login_user(user, remember=True)
             return redirect(request.args.get("next") or "/")
+        flash('Credentials not correct. Try again')
 
     return render_template("login.html", user_info=get_current_user_info())
 

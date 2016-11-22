@@ -102,6 +102,7 @@ def www_view_document(docid):
 
 @app.route('/document/review/<int:docid>', methods=['GET'])
 @login_required
+@moderators_only
 def www_review_document(docid):
     doc_data = document_logic.get_document(docid)
     if doc_data:
