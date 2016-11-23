@@ -35,8 +35,8 @@ def delete_primary_tables():
 
 def create_users():
     """
-    {'username': 'admin', 'password': 'password', 'email': 'abc@xyz.com', is_moderator': true}
-    {'username': 'user', 'password': 'password', 'email': 'def@xyz.com', is_moderator': false}
+    {"username": "admin", "password": "password", "email": "abc@xyz.com", "is_moderator": true}
+    {"username": "user", "password": "password", "email": "abc@xyz.com", "is_moderator": false}
     """
     print 'Creating users'
     with open('preload_users.txt', 'r') as users_file:

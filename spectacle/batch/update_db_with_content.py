@@ -2,9 +2,11 @@
 """
 Script to extract text from PDF and add it to the contents
 """
+from boto.s3.connection import S3Connection
 import os
 import urllib
 
+import config
 from spectacle.document.logic import edit_document
 from spectacle.document.logic import get_all_unpublished_doc_ids
 from spectacle.document.logic import get_document
@@ -13,10 +15,24 @@ from spectacle.document.logic import get_document
 DOWNLOAD_DIR = "static/pdf/"
 
 
+def _get_s3_connection():
+    if not (config.S3_ACCESS_KEY and config.S3_SECRET_KEY):
+        return
+    return S3Connection(config.S3_ACCESS_KEY, config.S3_SECRET_KEY)
+
+
 def download_file(url, filename):
     full_file_path = os.path.join(DOWNLOAD_DIR, filename)
     urllib.urlretrieve(url, full_file_path)
     return full_file_path
+
+
+def upload_to_s3(connection, filename, filepath):
+    bucket = connection.get_bucket(config.S3_PDF_BUCKET)
+    key = bucket.new_key(filename)
+    with open(filepath, 'r') as f:
+        key.set_contents_from_string(f.read())
+        key.set_canned_acl('private')
 
 
 def extract_text_from_doc(filename):
@@ -36,6 +52,7 @@ def main():
 
         print 'Processing id: {}, title: {}'.format(doc.id, doc.title)
         downloaded_file_path = download_file(doc.original_url, '{}.pdf'.format(doc_id))
+        upload_to_s3(_get_s3_connection(), '{}.pdf'.format(doc_id), downloaded_file_path)
         edit_document(
             doc_id=doc.id,
             title=doc.title,
