@@ -7,7 +7,8 @@ from elasticsearch import Elasticsearch
 
 from spectacle.database_definitions import CURRENT_DATABASE
 from spectacle.document.model import Document, SubmittedDocument, PublishedDocument
-from spectacle.user.model import User, db_add_user, hash_pass, db_promote_user
+from spectacle.user.model import User, db_add_user, db_promote_user
+from spectacle.user.utils import hash_pass
 from spectacle.database_definitions import ES_INDEX_MAPPING
 
 from config import ES_INDEX, ES_HOST, ES_PORT

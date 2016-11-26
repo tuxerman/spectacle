@@ -2,15 +2,15 @@
 """
 Views related to users, logins, sessions, etc.
 """
-from flask import flash, jsonify, render_template, request
-from app import app
-from flask_login import login_required, current_user, login_user, logout_user, redirect
-from spectacle.user.model import hash_pass, db_get_user
-from spectacle.user.utils import get_current_user_info
-from app import login_serializer, login_manager
+from flask import flash, jsonify, render_template, request, redirect
+from application import application
+from flask_login import login_required, current_user, login_user, logout_user
+from spectacle.user.model import db_get_user
+from spectacle.user.utils import get_current_user_info, hash_pass
+from application import login_serializer, login_manager
 
 
-@app.route("/logout/")
+@application.route("/logout/")
 def logout_page():
     """
     Web Page to Logout User, then Redirect them to Index Page.
@@ -20,7 +20,7 @@ def logout_page():
     return redirect("/")
 
 
-@app.route("/login/", methods=["GET", "POST"])
+@application.route("/login/", methods=["GET", "POST"])
 def login_page():
     """
     Web Page to Display Login Form and process form.
@@ -40,7 +40,7 @@ def login_page():
     return render_template("login.html", user_info=get_current_user_info())
 
 
-@app.route("/restricted/")
+@application.route("/restricted/")
 @login_required
 def restricted_page():
     """
@@ -82,7 +82,7 @@ def load_token(token):
     # on the users computer it also has a exipry date, but could be changed by
     # the user, so this feature allows us to enforce the exipry date of the token
     # server side and not rely on the users cookie to exipre.
-    max_age = app.config["REMEMBER_COOKIE_DURATION"].total_seconds()
+    max_age = application.config["REMEMBER_COOKIE_DURATION"].total_seconds()
 
     # Decrypt the Security Token, data = [username, hashpass]
     username, password_hash = login_serializer.loads(token, max_age=max_age)
