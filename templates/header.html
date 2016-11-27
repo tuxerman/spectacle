@@ -4,7 +4,8 @@
   <div id="header-row" class="row">
 
     <div id="logo" class="four columns">
-      <h2 onclick="location.href='/';">Spectacle</h2>
+      <!-- <h2 onclick="location.href='/';">Spectacle</h2> -->
+      <img src="{{ url_for('static', filename='img/spectacle-logo.svg') }}" onclick="location.href='/';">
     </div>
 
     <div id="nav" class="eight columns u-pull-right">
@@ -15,7 +16,7 @@
         <li><a href="/login">Login</a></li>
         {% endif %}
         <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="/about">About</a></li>
       </ul>
     </div>
 
