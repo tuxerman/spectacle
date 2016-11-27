@@ -14,15 +14,19 @@ DocumentReviewer = (function(){
             settings.publishButton = $("#publish_button");
             settings.docId = globalDocId;
             settings.postURL = '/document/publish/' + globalDocId;
+            settings.statusBox = $("#status_bar");
 
             settings.titleBox.focus();
             this.bindUIActions();
         },
         publishFunction: function (editedDocInfo) {
             $.post(settings.postURL, data=editedDocInfo, function(data) {
+                settings.statusBox.show();
+                setTimeout(function() {
+                    settings.statusBox.hide();
+                    window.location.href = '/review';
+                }, 5000);
             });
-            alert("Publishing process initiated");
-            window.location.href = '/review';
         },
         bindUIActions: function() {
             addFunction = this.publishFunction;
@@ -37,6 +41,10 @@ DocumentReviewer = (function(){
                     'source': settings.sourceBox.val()
                 }
                 addFunction(editedDocInfo);
+            });
+            settings.statusBox.click(function (e) {
+                settings.statusBox.hide();
+                window.location.href = '/review';
             });
         },
     }

@@ -2,16 +2,20 @@
 """
 WWW views
 """
-from app import app
+from application import application
 from flask import render_template
 from flask import abort
+from flask import Response
 from flask_login import login_required
+import config
+from boto.s3.connection import S3Connection
+import boto
 
 import spectacle.document.logic as document_logic
 from spectacle.user.utils import moderators_only, get_current_user_info
 
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def www_show_home():
     return render_template(
         'homepage.html',
@@ -19,14 +23,30 @@ def www_show_home():
     )
 
 
-@app.route('/submit', methods=['GET'])
+@application.route('/about', methods=['GET'])
+def www_show_about():
+    return render_template(
+        'about.html',
+        user_info=get_current_user_info()
+    )
+
+
+@application.route('/register', methods=['GET'])
+def www_show_register():
+    return render_template(
+        'register.html',
+        user_info=get_current_user_info()
+    )
+
+
+@application.route('/submit', methods=['GET'])
 def www_show_submit():
     return render_template(
         'submit_document.html',
         user_info=get_current_user_info())
 
 
-@app.route('/review', methods=['GET'])
+@application.route('/review', methods=['GET'])
 @login_required
 @moderators_only
 def www_show_review_dashboard():
@@ -50,7 +70,7 @@ def www_show_review_dashboard():
     )
 
 
-@app.route('/dashboard', methods=['GET'])
+@application.route('/dashboard', methods=['GET'])
 @login_required
 def www_show_user_dashboard():
     def doc_submission_data(doc):
@@ -88,19 +108,32 @@ def www_show_user_dashboard():
     )
 
 
-@app.route('/document/<int:docid>', methods=['GET'])
+@application.route('/document/<int:docid>', methods=['GET'])
 def www_view_document(docid):
-    doc_data = document_logic.get_published_document(docid)
-    if doc_data:
+    def doc_view_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'topic_id': doc.topic_id,
+            'summary': doc.summary,
+            'original_url': doc.original_url,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'date_published': doc.date_published.strftime("%d %b %Y, %H:%M"),
+            'url': 'https://s3.amazonaws.com/{}/{}.pdf'.format(config.S3_PDF_BUCKET, doc.id),
+            'source': doc.source
+        }
+
+    document = document_logic.get_published_document(docid)
+    if document:
         return render_template(
             'view_document.html',
-            document_data=doc_data,
+            document_data=doc_view_data(document),
             user_info=get_current_user_info())
     else:
         abort(404)
 
 
-@app.route('/document/review/<int:docid>', methods=['GET'])
+@application.route('/document/review/<int:docid>', methods=['GET'])
 @login_required
 @moderators_only
 def www_review_document(docid):
@@ -114,7 +147,18 @@ def www_review_document(docid):
         abort(404)
 
 
-@app.route('/pdf_document/<string:filename>', methods=['GET'])
-def get_pdf(filename):
+@application.route('/pdf_document/<string:filename>', methods=['GET'])
+def get_pdf_from_s3(filename):
     # https://gist.github.com/jessejlt/1306827 for tips on downloadable PDFs
-    return app.send_static_file('pdf/' + filename)
+    # return application.send_static_file('pdf/' + filename)
+
+    # stream test
+    conn = S3Connection(config.S3_ACCESS_KEY, config.S3_SECRET_KEY)
+    bucket = conn.get_bucket(config.S3_PDF_BUCKET, validate=False)
+    key = bucket.get_key(filename)
+    try:
+        key.open_read()
+        headers = dict(key.resp.getheaders())
+        return Response(key, headers=headers)
+    except boto.exception.S3ResponseError as e:
+        return Response(e.body, status=e.status, headers=key.resp.getheaders())

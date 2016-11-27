@@ -26,6 +26,7 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/document_viewer.js') }}"></script>
 </head>
 <body>
 
@@ -37,74 +38,34 @@
 
     <div class="row">
       <div class="twelve columns">
-        <h3>Dashboard: {{user_info.username}}</h3>
+        <h3>About</h3>
       </div>
     </div>
 
-    {% if docs_submitted %}
     <div class="row">
-      <div class="twelve columns">
-        <h4> Submitted Documents </h4>
-      </div>
-      <div class="twelve columns" style="margin-top: 5%">
-        <table class="u-full-width">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Date Added</th>
-            <th>Source</th>
-            <th>Date Published</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for doc in docs_submitted %}
-          <tr>
-            <td>{{doc.title}}</td>
-            <td>{{doc.date_added}}</td>
-            <td>{{doc.source}}</td>
-             <td>{{doc.date_published}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <div class="ten columns" style="margin-top: 5%">
+        <h4>What</h4>
+          <p>Spectacle intends to permanently archive, and enable citizens quickly search over large volumes of publicly-released government documents.</p>
+          <p>Of particular interest and inspiration are the thousands of documents released by the Government of India under the <a href="https://en.wikipedia.org/wiki/Right_to_Information_Act,_2005">Right to Information Act, 2005</a>.</p>
+        
+        <h4>Why</h4>
+          <p>The RTI act is a powerful enabler. However, for all the effort spent (by both the citizens as well as the officials concerned) in retrieving this information, there is no single repository for it all. Spectacle aims to be this library, saving both public spirited citizens' time as well as that of the government by eliminating the need to make repeated queries for information that already exists somewhere. </p>
+
+        <h4>Who</h4>
+          <p>The team comprises, well.. just me right now. *crickets*</p>
+        <h4>How can I help</h4>
+          <ul>
+            <li>You can start by <a href="/submit">submitting</a> documents you think belong here</li>
+            <li>Contact us <a href="#">abc@xyz.com</a> to volunteer in reviewing and publishing submitted documents</li>
+            <li>Spread the word on <a href="https://twitter.com/intent/tweet?text=Check out Spectacle, blah blah&url=https%3A%2F%2Fspectacle.io%2F&original_referer=https%3A%2F%2Fspectacle.io"> twitter</a></li>
+          </ul>
       </div>
     </div>
-    {% else %}
-    <p>You haven't submitted anything yet. <a href="/submit">Get started!</a></p>
-    {% endif %}
 
-    {% if docs_published %}
-    <div class="row">
-      <div class="twelve columns">
-        <h4> Reviewed Documents </h4>
-      </div>
-      <div class="twelve columns" style="margin-top: 5%">
-        <table class="u-full-width">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Date Added</th>
-            <th>Source</th>
-            <th>Date Published</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for doc in docs_published %}
-          <tr>
-            <td>{{doc.title}}</td>
-            <td>{{doc.date_added}}</td>
-            <td>{{doc.source}}</td>
-             <td>{{doc.date_published}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      </div>
-    </div>
-    {% endif %}
-
-  </div>
+  </div> 
+  
   {% include 'footer.html' %}
+
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>

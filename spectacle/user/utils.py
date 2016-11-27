@@ -2,10 +2,11 @@
 """
 Helper functions related to users, logins, sessions, etc.
 """
+import md5
 from functools import wraps
-
+from application import application
 from flask_login import current_user
-from flask_login import redirect
+from flask import redirect
 
 
 def get_current_user_info():
@@ -24,3 +25,11 @@ def moderators_only(func):
             return redirect('/login')
         return func(*args, **kwargs)
     return wrapper
+
+
+def hash_pass(password):
+    """
+    Return the md5 hash of the password+salt
+    """
+    salted_password = password + application.secret_key
+    return md5.new(salted_password).hexdigest()

@@ -2,7 +2,7 @@ clean:
 	rm -rf venv;
 
 install:
-	virtualenv venv; \
+	virtualenv venv --no-site-packages; \
 	venv/bin/pip install -r requirements.txt;
 
 createdb:

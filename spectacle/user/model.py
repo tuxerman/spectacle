@@ -7,7 +7,7 @@ import md5
 from peewee import CharField, DateTimeField, TextField, BooleanField
 from datetime import datetime
 from flask_login import UserMixin
-from app import app, login_serializer
+from application import login_serializer
 
 from spectacle.database_definitions import CURRENT_BASE_MODEL
 
@@ -55,11 +55,3 @@ def db_promote_user(username):
         raise
     user.is_moderator = True
     user.save()
-
-
-def hash_pass(password):
-    """
-    Return the md5 hash of the password+salt
-    """
-    salted_password = password + app.secret_key
-    return md5.new(salted_password).hexdigest()

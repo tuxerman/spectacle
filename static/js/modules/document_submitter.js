@@ -12,18 +12,29 @@ DocumentSubmitter = (function(){
             settings.originalUrlBox = $('#form_original_url');
             settings.sourceBox = $('#form_source');
             settings.submitButton = $("#submit_button");
+            settings.statusBox = $("#status_bar");
 
             settings.titleBox.focus();
             this.bindUIActions();
         },
         submitDoc: function (newDocInfo) {
             $.post(settings.postURL, data=newDocInfo, function(data) {
-                alert("New document has been submitted for review");
-                window.location.href = '/';
+                settings.statusBox.show();
+                setTimeout(function() {
+                    settings.statusBox.click();
+                }, 5000);
             });
         },
+        clearAllFields: function () {
+            settings.titleBox.val('');
+            settings.summaryBox.val('');
+            settings.topicIdBox.val('');
+            settings.originalUrlBox.val('');
+            settings.sourceBox.val('');
+        },
         bindUIActions: function() {
-            addFunction = this.submitDoc;
+            submitDoc = this.submitDoc;
+            clearFields = this.clearAllFields;
             settings.submitButton.click(function (e) {
                 newDocInfo = {
                     'title': settings.titleBox.val(),
@@ -32,7 +43,11 @@ DocumentSubmitter = (function(){
                     'original_url': settings.originalUrlBox.val(),
                     'source': settings.sourceBox.val()
                 }
-                addFunction(newDocInfo);
+                submitDoc(newDocInfo);
+            });
+            settings.statusBox.click(function (e) {
+                clearFields();
+                settings.statusBox.hide();
             });
         },
     }
