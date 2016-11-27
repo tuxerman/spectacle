@@ -19,7 +19,7 @@ def submit_document():
         summary=doc_data['summary'],
         original_url=doc_data['original_url'],
         source=doc_data['source'],
-        user_id=user_info['username']
+        user_id=user_info.get('username')
     )
     return jsonify({'id': new_doc_id})
 

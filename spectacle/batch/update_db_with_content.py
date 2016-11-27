@@ -31,8 +31,14 @@ def upload_to_s3(connection, filename, filepath):
     bucket = connection.get_bucket(config.S3_PDF_BUCKET)
     key = bucket.new_key(filename)
     with open(filepath, 'r') as f:
-        key.set_contents_from_string(f.read())
-        key.set_canned_acl('private')
+        key.set_contents_from_string(
+            f.read(),
+            headers={
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': 'inline',
+            }
+        )
+        key.set_canned_acl('public-read')
 
 
 def extract_text_from_doc(filename):
