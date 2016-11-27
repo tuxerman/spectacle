@@ -5,7 +5,11 @@ WWW views
 from application import application
 from flask import render_template
 from flask import abort
+from flask import Response
 from flask_login import login_required
+import config
+from boto.s3.connection import S3Connection
+import boto
 
 import spectacle.document.logic as document_logic
 from spectacle.user.utils import moderators_only, get_current_user_info
@@ -15,6 +19,22 @@ from spectacle.user.utils import moderators_only, get_current_user_info
 def www_show_home():
     return render_template(
         'homepage.html',
+        user_info=get_current_user_info()
+    )
+
+
+@application.route('/about', methods=['GET'])
+def www_show_about():
+    return render_template(
+        'about.html',
+        user_info=get_current_user_info()
+    )
+
+
+@application.route('/register', methods=['GET'])
+def www_show_register():
+    return render_template(
+        'register.html',
         user_info=get_current_user_info()
     )
 
@@ -90,11 +110,24 @@ def www_show_user_dashboard():
 
 @application.route('/document/<int:docid>', methods=['GET'])
 def www_view_document(docid):
-    doc_data = document_logic.get_published_document(docid)
-    if doc_data:
+    def doc_view_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'topic_id': doc.topic_id,
+            'summary': doc.summary,
+            'original_url': doc.original_url,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'date_published': doc.date_published.strftime("%d %b %Y, %H:%M"),
+            'url': 'https://s3.amazonaws.com/{}/{}.pdf'.format(config.S3_PDF_BUCKET, doc.id),
+            'source': doc.source
+        }
+
+    document = document_logic.get_published_document(docid)
+    if document:
         return render_template(
             'view_document.html',
-            document_data=doc_data,
+            document_data=doc_view_data(document),
             user_info=get_current_user_info())
     else:
         abort(404)
@@ -115,6 +148,17 @@ def www_review_document(docid):
 
 
 @application.route('/pdf_document/<string:filename>', methods=['GET'])
-def get_pdf(filename):
+def get_pdf_from_s3(filename):
     # https://gist.github.com/jessejlt/1306827 for tips on downloadable PDFs
-    return application.send_static_file('pdf/' + filename)
+    # return application.send_static_file('pdf/' + filename)
+
+    # stream test
+    conn = S3Connection(config.S3_ACCESS_KEY, config.S3_SECRET_KEY)
+    bucket = conn.get_bucket(config.S3_PDF_BUCKET, validate=False)
+    key = bucket.get_key(filename)
+    try:
+        key.open_read()
+        headers = dict(key.resp.getheaders())
+        return Response(key, headers=headers)
+    except boto.exception.S3ResponseError as e:
+        return Response(e.body, status=e.status, headers=key.resp.getheaders())

@@ -63,6 +63,7 @@ body {
 }
 
 #nav ul li {
+    text-transform: lowercase;
     float: right;
     display: inline;
     margin: 0 20px 0 0;

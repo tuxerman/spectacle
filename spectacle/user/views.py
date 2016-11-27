@@ -34,7 +34,7 @@ def login_page():
         # it.
         if user and hash_pass(request.form['password']) == user.password_hash:
             login_user(user, remember=True)
-            return redirect(request.args.get("next") or "/")
+            return redirect(request.args.get("next") or "/dashboard")
         flash('Credentials not correct. Try again')
 
     return render_template("login.html", user_info=get_current_user_info())
