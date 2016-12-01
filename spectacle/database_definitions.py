@@ -6,14 +6,14 @@ from playhouse.sqlite_ext import SqliteExtDatabase
 from peewee import MySQLDatabase
 from peewee import Model
 
-from config import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB
+from config import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB_NAME
 from config import SQLITE_FILEPATH
 from config import CURRENT_DATABASE_TYPE
 
 
 SQLITE_DB = SqliteExtDatabase(SQLITE_FILEPATH, threadlocals=True)
 MYSQL_DB = MySQLDatabase(
-    MYSQL_DB,
+    MYSQL_DB_NAME,
     host=MYSQL_HOST,
     port=MYSQL_PORT,
     user=MYSQL_USER,

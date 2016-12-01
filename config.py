@@ -14,11 +14,12 @@ MYSQL_HOST = os.environ.get('MYSQL_HOST', '127.0.0.1')
 MYSQL_PORT = os.environ.get('MYSQL_PORT', 3306)
 MYSQL_USER = os.environ.get('MYSQL_USER', 'sriram')
 MYSQL_PASSWD = os.environ.get('MYSQL_PASSWORD', 'password')
-MYSQL_DB = 'documents'
+MYSQL_DB_NAME = 'documents'
 # AWS RDS overrides
 if 'RDS_HOSTNAME' in os.environ:
+    MYSQL_DB_NAME = os.environ['RDS_DB_NAME']
     MYSQL_HOST = os.environ['RDS_HOSTNAME']
-    MYSQL_PORT = os.environ['RDS_PORT']
+    MYSQL_PORT = int(os.environ['RDS_PORT'])
     MYSQL_USER = os.environ['RDS_USERNAME']
     MYSQL_PASSWD = os.environ['RDS_PASSWORD']
 
