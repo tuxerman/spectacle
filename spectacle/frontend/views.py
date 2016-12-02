@@ -10,7 +10,7 @@ from flask_login import login_required
 import config
 from boto.s3.connection import S3Connection
 import boto
-
+from spectacle.database_definitions import CURRENT_DATABASE
 import spectacle.document.logic as document_logic
 from spectacle.user.utils import moderators_only, get_current_user_info
 
@@ -49,6 +49,7 @@ def www_show_submit():
 @application.route('/review', methods=['GET'])
 @login_required
 @moderators_only
+@CURRENT_DATABASE.atomic()
 def www_show_review_dashboard():
 
     def doc_review_data(doc):
@@ -72,6 +73,7 @@ def www_show_review_dashboard():
 
 @application.route('/dashboard', methods=['GET'])
 @login_required
+@CURRENT_DATABASE.atomic()
 def www_show_user_dashboard():
     def doc_submission_data(doc):
         return {
@@ -109,6 +111,7 @@ def www_show_user_dashboard():
 
 
 @application.route('/document/<int:docid>', methods=['GET'])
+@CURRENT_DATABASE.atomic()
 def www_view_document(docid):
     def doc_view_data(doc):
         return {
@@ -136,6 +139,7 @@ def www_view_document(docid):
 @application.route('/document/review/<int:docid>', methods=['GET'])
 @login_required
 @moderators_only
+@CURRENT_DATABASE.atomic()
 def www_review_document(docid):
     doc_data = document_logic.get_document(docid)
     if doc_data:

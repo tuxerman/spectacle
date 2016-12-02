@@ -2,8 +2,6 @@
 """
 ORM and data functions for User
 """
-import md5
-
 from peewee import CharField, DateTimeField, TextField, BooleanField
 from datetime import datetime
 from flask_login import UserMixin

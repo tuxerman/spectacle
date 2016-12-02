@@ -6,9 +6,11 @@ from flask import jsonify, request
 import spectacle.document.logic as document_logic
 from application import application
 from spectacle.user.utils import get_current_user_info
+from spectacle.database_definitions import CURRENT_DATABASE
 
 
 @application.route('/document/submit', methods=['POST'])
+@CURRENT_DATABASE.atomic()
 def submit_document():
     user_info = get_current_user_info()
     doc_data = request.form
@@ -25,6 +27,7 @@ def submit_document():
 
 
 @application.route('/document/publish/<int:docid>', methods=['POST'])
+@CURRENT_DATABASE.atomic()
 def publish_document(docid):
     user_info = get_current_user_info()
     doc_data = request.form

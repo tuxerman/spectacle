@@ -26,9 +26,9 @@ if 'RDS_HOSTNAME' in os.environ:
 # ElasticSearch Options
 ES_HOST = os.environ.get('ES_HOST', '127.0.0.1')
 ES_PORT = os.environ.get('ES_PORT', 9200)
-ES_INDEX = 'testindex_02'
+ES_INDEX = 'spectacle_fts_index_dev'
 
 # S3 credentials
 S3_ACCESS_KEY = os.environ.get('S3_ACCESS_KEY')
 S3_SECRET_KEY = os.environ.get('S3_SECRET_KEY')
-S3_PDF_BUCKET = 'spectacle-storage'
+S3_PDF_BUCKET = 'spectacle-storage-dev'
