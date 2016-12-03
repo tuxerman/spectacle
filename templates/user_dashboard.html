@@ -73,11 +73,16 @@
     <p>You haven't submitted anything yet. <a href="/submit">Get started!</a></p>
     {% endif %}
 
-    {% if docs_published %}
+    {% if user_info['is_moderator'] %}
     <div class="row">
       <div class="twelve columns">
         <h4> Reviewed Documents </h4>
+        {% if docs_published %}
+        <p><a href="/submit">Review more</a></p>
+        {% endif %}
       </div>
+
+      {% if docs_published %}
       <div class="twelve columns" style="margin-top: 5%">
         <table class="u-full-width">
         <thead>
@@ -100,8 +105,11 @@
         </tbody>
       </table>
       </div>
-    </div>
+    {% else %}
+    <p>Nothing yet. <a href="/submit">Review a submitted document</a></p>
     {% endif %}
+    </div>
+  {% endif %}
 
   </div>
   {% include 'footer.html' %}
