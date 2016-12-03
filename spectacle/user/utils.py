@@ -22,7 +22,7 @@ def moderators_only(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if not current_user.is_moderator:
-            return redirect('/login')
+            return redirect('/login?reason=mod_access_reqd')
         return func(*args, **kwargs)
     return wrapper
 

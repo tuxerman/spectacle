@@ -10,6 +10,14 @@ from spectacle.user.utils import get_current_user_info, hash_pass
 from application import login_serializer, login_manager
 
 
+LOGIN_FAILURE_REASON_TO_STATUS_BOX_INFO = {
+    'mod_access_reqd': {
+        'title': 'Insufficient Privileges',
+        'message': 'Sorry, but you have to be logged in with a moderator account in order to access this page'
+    },
+}
+
+
 @application.route("/logout/")
 def logout_page():
     """
@@ -25,6 +33,12 @@ def login_page():
     """
     Web Page to Display Login Form and process form.
     """
+    # if we were sent here with a message, see what's up
+    status_bar_info = None
+    if request.args.get('reason'):
+        status_bar_info = LOGIN_FAILURE_REASON_TO_STATUS_BOX_INFO.get(request.args['reason'])
+
+    # login mechanism
     if request.method == "POST":
         user = db_get_user(request.form['username'])
 
@@ -35,9 +49,19 @@ def login_page():
         if user and hash_pass(request.form['password']) == user.password_hash:
             login_user(user, remember=True)
             return redirect(request.args.get("next") or "/dashboard")
-        flash('Credentials not correct. Try again')
 
-    return render_template("login.html", user_info=get_current_user_info())
+        # error authenticating
+        status_bar_info = {
+            'title': 'Error logging in',
+            'message': 'Check your username and password'
+        }
+
+    # finally, generate the page
+    return render_template(
+        "login.html",
+        status_bar_info=status_bar_info,
+        user_info=get_current_user_info()
+    )
 
 
 @application.route("/restricted/")

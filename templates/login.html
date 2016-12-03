@@ -26,6 +26,12 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/simple_status_bar.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+        SimpleStatusBar.init();
+    });
+  </script>
 </head>
 <body>
 
@@ -40,6 +46,15 @@
         <p>Don't have an account? <a href="/register">Create one!</a>  It's free.</p>
       </div>
     </div>
+
+    {% if status_bar_info %}
+    <div class="row" style="margin-top: 1rem" id="status_bar">
+      <div class="ten columns message-popup">
+        <h5>{{ status_bar_info.title }}</h5>
+        <p>{{ status_bar_info.message }}</p>
+      </div>
+    </div>
+    {% endif %}
 
     <div class="row" style="margin-top: 2rem">
       <div class="six columns"style="margin-top: 1rem">
@@ -63,13 +78,6 @@
   </form>
   </div>
 
-<!-- 
-  <div class="row" style="margin-top: 2rem">
-    <div class="three columns"style="margin-top: 1rem">
-      <button class="button-primary" type="submit" sid="submit_button">Submit</button>
-    </div>
-  </div>
- -->
   {% include 'footer.html' %}
 
 <!-- End Document
