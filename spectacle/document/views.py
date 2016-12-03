@@ -16,7 +16,7 @@ def submit_document():
     doc_data = request.form
     new_doc_id = document_logic.add_document(
         title=doc_data['title'],
-        topic_id=doc_data['topic_id'],
+        topic_id=-1,
         content='',  # content
         summary=doc_data['summary'],
         original_url=doc_data['original_url'],
@@ -34,7 +34,7 @@ def publish_document(docid):
     document_logic.edit_document(
         docid,
         title=doc_data['title'],
-        topic_id=doc_data['topic_id'],
+        topic_id=-1,
         content=doc_data['content'],
         summary=doc_data['summary'],
         original_url=doc_data['original_url'],

@@ -121,7 +121,6 @@ def www_view_document(docid):
             'summary': doc.summary,
             'original_url': doc.original_url,
             'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
-            'date_published': doc.date_published.strftime("%d %b %Y, %H:%M"),
             'url': 'https://s3.amazonaws.com/{}/{}.pdf'.format(config.S3_PDF_BUCKET, doc.id),
             'source': doc.source
         }
@@ -141,11 +140,23 @@ def www_view_document(docid):
 @moderators_only
 @CURRENT_DATABASE.atomic()
 def www_review_document(docid):
-    doc_data = document_logic.get_document(docid)
-    if doc_data:
+    def doc_review_data(doc):
+        return {
+            'id': doc.id,
+            'title': doc.title,
+            'topic_id': doc.topic_id,
+            'content': doc.content,
+            'summary': doc.summary,
+            'original_url': doc.original_url,
+            'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'url': 'https://s3.amazonaws.com/{}/{}.pdf'.format(config.S3_PDF_BUCKET, doc.id),
+            'source': doc.source
+        }
+    document = document_logic.get_document(docid)
+    if document:
         return render_template(
             'review_document.html',
-            document_data=doc_data,
+            document_data=doc_review_data(document),
             user_info=get_current_user_info())
     else:
         abort(404)

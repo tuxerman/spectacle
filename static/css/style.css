@@ -62,6 +62,10 @@ body {
   cursor: pointer; cursor: hand;
 }
 
+.form-validation-error {
+  color: #FF5722;
+}
+
 #nav ul li {
     text-transform: lowercase;
     float: right;
