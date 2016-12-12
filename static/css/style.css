@@ -18,7 +18,7 @@ body {
 }
 
 .container{
-    padding-top: 18px;
+    /*padding-top: 18px;*/
 }
 .homepage-feature {
     padding:10px;
@@ -32,13 +32,27 @@ body {
 
 .nav-button {
   text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  float: right;
 }
 .nav-button p {
+  padding-top: 18px;
   margin-bottom: 0px;
+  padding-bottom: 15px;
 }
 .nav-button:hover{
   color: #FF5722;
+  background-color: #DDDDDD;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   cursor: pointer; cursor: hand;
+}
+
+.search-button {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .document-navigator {
@@ -54,8 +68,8 @@ body {
 
 #logo img {
     cursor: pointer; cursor: hand;
+    margin-top: 15px;
     height: 30px;
-    /*width:220px;*/
 }
 
 .message-popup {

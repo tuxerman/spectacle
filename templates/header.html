@@ -4,28 +4,28 @@
 
   <div id="header-row" class="row">
 
-    <div id="logo" class="six columns">
+    <div id="logo" class="four columns">
       <!-- <h2 onclick="location.href='/';">Spectacle</h2> -->
       <img src="{{ url_for('static', filename='img/spectacle-logo.svg') }}" onclick="location.href='/';">
     </div>
 
-    <div class="two columns  nav-button" onclick="location.href='/about';">
-      <p><i class="fa fa-info" aria-hidden="true"></i> &nbsp; about</p>
-    </div>
+    {% if user_info['logged_in'] %}
+      <div class="three columns nav-button" onclick="location.href='/logout';">
+        <p> <i class="fa fa-user" aria-hidden="true"></i> &nbsp; logout '{{user_info.username}}'</p>
+      </div>
+    {% else %}
+      <div class="three columns nav-button" onclick="location.href='/login';">
+        <p><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; login</p>
+      </div>
+    {% endif %}
 
     <div class="two columns nav-button" onclick="location.href='/submit';">
       <p><i class="fa fa-plus" aria-hidden="true"></i> &nbsp; submit</p>
     </div>
 
-    {% if user_info['logged_in'] %}
-      <div class="two columns nav-button" onclick="location.href='/logout';">
-        <p> <i class="fa fa-user" aria-hidden="true"></i> &nbsp; logout '{{user_info.username}}'</p>
-      </div>
-    {% else %}
-      <div class="two columns  nav-button" onclick="location.href='/login';">
-        <p><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; login</p>
-      </div>
-    {% endif %}
+    <div class="two columns nav-button" onclick="location.href='/about';">
+      <p><i class="fa fa-info" aria-hidden="true"></i> &nbsp; about</p>
+    </div>
 
   </div>
 
