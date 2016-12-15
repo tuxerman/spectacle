@@ -1,28 +1,34 @@
-Searcher = (function(){
+Searcher = (function() {
     var settings = {
-      searchURL: '/document/search'
+        searchURL: '/document/search',
+        defaultPageSize: 15
     };
 
     return {
-        init: function () {
+        init: function() {
             settings.searchBox = $('#search_string');
             settings.searchButton = $('#search_button');
             settings.searchResultsPanel = $('#search_results_panel');
             settings.searchResultsDiv = $('#search_results');
-            settings.homepageFeaturesPanel=$('#homepage-features-panel');
+            settings.homepageFeaturesPanel = $('#homepage-features-panel');
+            settings.searchBoxLeftSpacer = $('#searchbox-left-spacer');
+            settings.hero = $('#hero');
             settings.searchBox.focus();
             this.bindUIActions();
         },
 
-        doSearch: function (searchString) {
+        doSearch: function(searchString) {
             searchQuery = settings.searchBox.val();
-            $.get(settings.searchURL, {query: searchQuery}, function(data) {
+            $.get(settings.searchURL, {
+                query: searchQuery,
+                page_size: settings.defaultPageSize
+            }, function(data) {
                 settings.searchResultsDiv.empty();
                 settings.searchResultsPanel.show();
                 settings.homepageFeaturesPanel.hide();
-                console.log(data);
-                $.each(data.results, function(i, result){
-                    console.log(result)
+                settings.searchBoxLeftSpacer.remove();
+                settings.hero.hide();
+                $.each(data.results, function(i, result) {
                     result_doc_id = result.doc_id;
                     result_title = result.title;
                     result_snippet = result.snippet;
@@ -34,8 +40,8 @@ Searcher = (function(){
 
         bindUIActions: function() {
             searchFunction = this.doSearch;
-            settings.searchButton.click(function (e) {
-              searchFunction(settings.searchBox.val());
+            settings.searchButton.click(function(e) {
+                searchFunction(settings.searchBox.val());
             });
             settings.searchBox.on('keydown', function(e) {
                 if (e.keyCode == 13)

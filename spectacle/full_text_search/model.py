@@ -15,11 +15,12 @@ es.indices.create(index=ES_INDEX, ignore=400, body=json.dumps(ES_INDEX_MAPPING))
 
 
 def db_index_document(document):
-    es.index(index=ES_INDEX,
-             doc_type='document',
-             id=document.id,
-             body=_es_doc_from_document(document)
-             )
+    es.index(
+        index=ES_INDEX,
+        doc_type='document',
+        id=document.id,
+        body=_es_doc_from_document(document)
+    )
 
 
 def _es_doc_from_document(document):
@@ -31,7 +32,7 @@ def _es_doc_from_document(document):
     }
 
 
-def _fuzzy_search_query(query_string):
+def _fuzzy_search_query(query_string, page_size, start_page):
     return {
         "query": {
             "multi_match": {
@@ -48,7 +49,9 @@ def _fuzzy_search_query(query_string):
                 "summary": {"fragment_size": 140, "number_of_fragments": 1},
                 "content": {"fragment_size": 140, "number_of_fragments": 1},
             }
-        }
+        },
+        "size": page_size,
+        "from": start_page,
     }
 
 
@@ -64,8 +67,13 @@ def _get_highlight_from_result(result):
             return None
 
 
-def db_search_documents(query_string):
-    response = es.search(index=ES_INDEX, body=_fuzzy_search_query(query_string))
+def db_search_documents(query_string, page_size, start_page):
+    page_size = page_size or 5
+    start_page = start_page or 0
+    response = es.search(
+        index=ES_INDEX,
+        body=_fuzzy_search_query(query_string, page_size, start_page),
+    )
     num_results = response['hits']['total']
     results = response['hits']['hits']
     search_results = {

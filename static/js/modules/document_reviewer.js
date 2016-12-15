@@ -21,6 +21,7 @@ DocumentReviewer = (function(){
         publishFunction: function (editedDocInfo) {
             $.post(settings.postURL, data=editedDocInfo, function(data) {
                 settings.statusBox.show();
+                window.location.hash = '#status_bar';
                 setTimeout(function() {
                     settings.statusBox.hide();
                     window.location.href = '/review';
