@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <!-- Basic Page Needs
@@ -25,64 +26,27 @@
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
+
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {% include 'header.html' %}
-
-  <div class="container">
-
-    <div class="row">
-      <div class="twelve columns">
-        <h3> {{document_data.title}} </h3>
+  <div class="container" style="margin-top: 5%">
+    <div class="row" style="margin-top: 2rem">
+      <div class="six columns" style="margin-top: 1rem">
+        <h2>404</h2>
+        <h3>This page doesn't exist.</h3>
+        <p>Well obviously <i>this</i> page does, but the one you were looking for doesn't.</p>
       </div>
     </div>
-
-    <div class="row">
-      <div id="section-description" class="eight columns" style="margin-top: 5%">
-        <h4>Description</h4>
-        <p> {{document_data.summary}} </p>
-      </div>
-      <div class="four columns document-navigator" style="margin-top: 5%">
-        <h5>Navigate</h5>
-        <ul>
-          <a href="#section-description"> <li>Description</li> </a>
-          <a href="#section-document-pdf"> <li>Document</li> </a>
-          <a href="#section-metadata"> <li>Metadata</li> </a>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row">
-      <div id="section-document-pdf" class="twelve columns" style="margin-top: 5%">
-        <h4>Document</h4>
-        <p><a href="{{document_data.url}}">Click here to download</a></p>
-        <iframe src="http://docs.google.com/gview?url={{document_data.url}}&embedded=true" style="width:100%; height:700px" frameborder="0"></iframe>
-      </div>
-    </div>
-
-    <div class="row">
-      <div id="section-metadata" class="twelve columns" style="margin-top: 5%">
-        <h4>Metadata</h4>
-        <table class="u-full-width">
-          <tbody>
-            <tr> <td><b>Date Submitted</b></td> <td>{{document_data.date_added}}</td> </tr>
-            <tr> <td><b>Date Published</b></td> <td>{{document_data.date_published}}</td> </tr>
-            <tr> <td><b>Source</b></td> <td>{{document_data.source}}</td> </tr>
-            <tr> <td><b>Original URL</b></td> <td><a href="{{document_data.original_url}}">Link</a></td> </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
   </div>
 
   {% include 'footer.html' %}
 
-<!-- End Document
+  <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+
 </html>

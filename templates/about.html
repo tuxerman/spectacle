@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <!-- Basic Page Needs
@@ -25,9 +26,8 @@
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/modules/document_viewer.js') }}"></script>
 </head>
+
 <body>
 
   <!-- Primary Page Layout
@@ -45,15 +45,25 @@
     <div class="row">
       <div class="ten columns" style="margin-top: 2rem">
         <h4>What</h4>
-          <p>Spectacle is a library for publicly released government documents.</p>
-          <p>Of particular interest and inspiration are the thousands of documents released by the Government of India under the <a href="https://en.wikipedia.org/wiki/Right_to_Information_Act,_2005">Right to Information Act, 2005</a>.</p>
+        <p>Spectacle is a library for publicly released government documents.</p>
+        <p>Of particular interest and inspiration are the thousands of documents released by
+            the Government of India under the
+            <a href="https://en.wikipedia.org/wiki/Right_to_Information_Act,_2005">Right to Information Act, 2005</a>.
+        </p>
 
         <h4>Why</h4>
-          <p>The RTI Act is a powerful enabler, and one of the best steps taken to improve transparency and accountability in the chaotic democracy that India has. However, for all the effort spent (by both citizens as well as the officials concerned) in retrieving this information, there is no single repository for it all.</p>
+        <p>The RTI Act is a powerful enabler, and one of the best steps taken to improve transparency and accountability
+            in the chaotic democracy that India has. However, for all the effort spent (by both citizens as well as the
+            officials concerned) in retrieving this information, there is no single repository for it all.</p>
 
-          <p>17 million RTI requests are reported to have been made since 2005, with 4800 requests being filed every single day. A significant percentage of these are repeated requests for information that has already been released. The result is an unacceptable amount of time, effort and public money being wasted in passing around information that already exists somewhere. Despite this, an attempt to fetch RTI replies published online leads to non-responsive government sites or dead links.</p>
+        <p>17 million RTI requests are reported to have been made since 2005, with 4800 requests being filed every
+            single day. A significant percentage of these are repeated requests for information that has already been
+            released. The result is an unacceptable amount of time, effort and public money being wasted in passing
+            around information that already exists somewhere.
+            Despite this, an attempt to fetch RTI replies published online leads to non-responsive government sites
+            or dead links.</p>
 
-          <p>Things shouldn't be this awful, especially in 2016. What we need is:
+        <p>Things shouldn't be this awful, especially in 2016. What we need is:
           <ul>
             <li>A central store, built to be resilient and to hold thousands to millions of documents</li>
             <li>A modern, intuitive site that is easy to use across all sorts of devices</li>
@@ -61,16 +71,19 @@
             <li>Scale easily to thousands of users browsing simultaneously</li>
             <li>Free access, in multiple languages</li>
           </ul>
-          </p>
+        </p>
 
         <h4>Who</h4>
-          <p>The team comprises, well.. just me right now. *crickets*</p>
+        <p>The team comprises, well.. just me right now. *crickets*</p>
         <h4>How can I help</h4>
-          <ul>
-            <li>You can start by <a href="/submit">submitting</a> documents you think belong here</li>
-            <li>Contact us: <strong>contact [at] spectaclearchive [dotcom]</strong> to volunteer in reviewing and publishing submitted documents</li>
-            <li>Spread the word on <a href="https://twitter.com/intent/tweet?text=Check out Spectacle&url=http%3A%2F%2Fspectaclearchive.com%2F&original_referer=http%3A%2F%2Fspectaclearchive.com"> twitter</a></li>
-          </ul>
+        <ul>
+          <li>You can start by <a href="/submit">submitting</a> documents you think belong here</li>
+          <li>Want to volunteer? <strong>contact [at] spectaclearchive [dotcom]</strong></li>
+          <li>Spread the word on
+              <a href="https://twitter.com/intent/tweet?text=Check out Spectacle&url=http%3A%2F%2Fspectaclearchive.com%2F&original_referer=http%3A%2F%2Fspectaclearchive.com">
+                  twitter
+              </a></li>
+        </ul>
       </div>
     </div>
 
@@ -78,7 +91,8 @@
 
   {% include 'footer.html' %}
 
-<!-- End Document
+  <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+
 </html>

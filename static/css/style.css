@@ -1,53 +1,58 @@
 /* Custom Stylesheet */
+
 html {
-  height: 100%;
-  box-sizing: border-box;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 body {
-  position: relative;
-  margin: 0;
-  padding-bottom: 20rem;
-  min-height: 100%;
+    position: relative;
+    margin: 0;
+    padding-bottom: 20rem;
+    min-height: 100%;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
-.container{
+.container {
     /*padding-top: 18px;*/
 }
+
 .homepage-feature {
-    padding:10px;
+    padding: 10px;
     text-align: center;
-    cursor: pointer; cursor: hand;
+    cursor: pointer;
+    cursor: hand;
 }
+
 .homepage-feature:hover {
-  background-color: #F4F4F4;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    background-color: #F4F4F4;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .nav-button {
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  float: right;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    float: right;
 }
+
 .nav-button p {
-  padding-top: 18px;
-  margin-bottom: 0px;
-  padding-bottom: 15px;
+    padding-top: 18px;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
 }
-.nav-button:hover{
-  color: #FF5722;
-  background-color: #DDDDDD;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  cursor: pointer; cursor: hand;
+
+.nav-button:hover {
+    /*color: #FF5722;*/
+    background-color: #EAEAEA;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    cursor: pointer;
+    cursor: hand;
 }
 
 .search-button {
@@ -61,30 +66,37 @@ body {
 }
 
 #logo h2 {
-    font-size: 3.0rem; letter-spacing: -.1rem; color: #FF5722;
-    margin: 0rem; 0 0 0;
-    cursor: pointer; cursor: hand;
+    font-size: 3.0rem;
+    letter-spacing: -.1rem;
+    color: #FF5722;
+    margin: 0rem;
+    0 0 0;
+    cursor: pointer;
+    cursor: hand;
 }
 
 #logo img {
-    cursor: pointer; cursor: hand;
+    cursor: pointer;
+    cursor: hand;
     margin-top: 15px;
     height: 30px;
 }
 
 .message-popup {
-    padding:0 20px 0 20px;
+    padding: 0 20px 0 20px;
     border: 1px solid #FF5722;
     margin: 10px 0 10px 0;
 }
-.message-popup:hover{
-  background-color: #F4F4F4;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  cursor: pointer; cursor: hand;
+
+.message-popup:hover {
+    background-color: #F4F4F4;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    cursor: pointer;
+    cursor: hand;
 }
 
 .form-validation-error {
-  color: #FF5722;
+    color: #FF5722;
 }
 
 #nav ul li {
@@ -110,10 +122,10 @@ body {
     bottom: 0;
     left: 0;
     text-align: center;
-    border-top: 1px solid #EFEFEF;
+    border-top: 1px solid #EAEAEA;
 }
 
 header {
-  background-color: #F8F8F8;
-  border-bottom: 1px solid #EFEFEF;
+    background-color: #F8F8F8;
+    border-bottom: 1px solid #EAEAEA;
 }

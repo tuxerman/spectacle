@@ -3,111 +3,115 @@
 
 <head>
 
-    <!-- Basic Page Needs
+  <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    <title>Spectacle</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <title>Spectacle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Mobile Specific Metas
+  <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- FONT
+  <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
 
-    <!-- CSS
+  <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
-    <!-- JS
+  <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/modules/searcher.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            Searcher.init();
-        });
-    </script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/modules/searcher.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+      Searcher.init();
+    });
+  </script>
 </head>
 
 <body>
 
-    <!-- Primary Page Layout
+  <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    {% include 'header.html' %}
-    <div class="container" style="margin-top: 1rem">
-        <div class="row" id="hero">
-            <div class="two columns" style="margin-top: 1rem"></div>
-            <div class="ten columns" style="text-align: left;">
-                <h5>Search the entire archive</h5>
-            </div>
-            <div class="two columns" style="margin-top: 1rem"></div>
-        </div>
+  {% include 'header.html' %}
+  <div class="container" style="margin-top: 1rem">
+    <div class="row" id="hero" style="margin-top: 5%">
+      <div class="two columns" style="margin-top: 1rem"></div>
+      <div class="eight columns">
+        <h3>Search, submit, download</h3>
+        <h5>A fast and simple library for public documents</h5>
+        <!-- <img class="u-max-full-width" src="{{ url_for('static', filename='img/spectacle-logo.svg') }}"> -->
+      </div>
+      <div class="two columns" style="margin-top: 1rem"></div>
+    </div>
 
-        <div class="row" style="margin-top: 1rem">
-            <div class="two columns" id="searchbox-left-spacer" style="margin-top: 1rem"></div>
-            <div class="seven columns" style="margin-top: 1rem">
-                <input class="u-full-width" type="text" placeholder="" id="search_string">
-            </div>
-            <div class="one column" style="margin-top: 1rem">
-                <button class="button-primary u-full-width search-button" id="search_button">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="two columns" style="margin-top: 1rem"></div>
-        </div>
-        <div id="search_results_panel" class="row" style="border-top: 1px solid #EFEFEF;" hidden>
-            <div class="twelve columns" style="margin-top: 5%">
-                <h4>Search Results</h4>
-            </div>
-            <div id="search_results" class="twelve columns">
-            </div>
-        </div>
+    <div class="row" style="margin-top: 1rem">
+      <div class="two columns" id="searchbox-left-spacer" style="margin-top: 1rem"></div>
+      <div class="seven columns" style="margin-top: 1rem">
+        <input class="u-full-width" type="text" placeholder="" id="search_string">
+      </div>
+      <div class="one column" style="margin-top: 1rem">
+        <button class="button-primary u-full-width search-button" id="search_button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="two columns" style="margin-top: 1rem"></div>
+    </div>
+    <div id="search_results_panel" class="row" style="border-top: 1px solid #EFEFEF;" hidden>
+      <div class="twelve columns" style="margin-top: 5%">
+        <h4>Search Results</h4>
+      </div>
+      <div id="search_results" class="twelve columns">
+      </div>
+    </div>
 
-        <div id="homepage-features-panel" class="row" style="margin-top: 5%">
+    <div id="homepage-features-panel" class="row" style="margin-top: 10%">
 
-            <div class="twelve columns homepage-feature" onclick="location.href='/submit';">
-                <h4>Submit</h4>
-                <p>Submit a document to be indexed</p>
-            </div>
+      <div class="one-third column homepage-feature" onclick="location.href='/submit';">
+        <h4><i class="fa fa-plus-square-o" aria-hidden="true"></i></h4>
+        <h4>Submit</h4>
+        <p>Submit a document to be indexed</p>
+      </div>
 
-            <!-- LOGGED-OUT USER -->
-            {% if not user_info['logged_in'] %}
-            <div class="twelve columns homepage-feature" onclick="location.href='/about';">
-                <h4>About</h4>
-                <p>What Spectacle is, and aims to be</p>
-            </div>
-            {% endif %}
+      <!-- LOGGED-OUT USER -->
+      {% if not user_info['logged_in'] %}
+      <div class="one-third column homepage-feature" onclick="location.href='/about';">
+        <h4><i class="fa fa-info-circle" aria-hidden="true"></i></h4>
+        <h4>About</h4>
+        <p>What Spectacle is, and aims to be</p>
+      </div>
+      {% endif %}
 
-            <!-- LOGGED IN USER -->
-            {% if user_info['logged_in'] %}
-            <div class="twelve columns homepage-feature" onclick="location.href='/dashboard';">
-                <h4>User Dashboard</h4>
-                <p>View submitted and reviewed documents</p>
-            </div>
+      <!-- LOGGED IN USER -->
+      {% if user_info['logged_in'] %}
+      <div class="one-third column homepage-feature" onclick="location.href='/dashboard';">
+        <h4><i class="fa fa-user" aria-hidden="true"></i></h4>
+        <h4>User Dashboard</h4>
+        <p>View submitted and reviewed documents</p>
+      </div>
 
-                <!-- MODERATOR -->
-                {% if user_info['is_moderator'] %}
-                <div class="twelve columns homepage-feature" onclick="location.href='/review';">
-                    <h4>Review</h4>
-                    <p>Review submitted documents and publish them</p>
-                </div>
-                {% endif %}
-
-            {% endif %}
-
-        </div>
+      <!-- MODERATOR -->
+      {% if user_info['is_moderator'] %}
+      <div class="one-third column homepage-feature" onclick="location.href='/review';">
+        <h4><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
+        <h4>Review</h4>
+        <p>Review submitted documents and publish them</p>
+      </div>
+      {% endif %} {% endif %}
 
     </div>
 
-    {% include 'footer.html' %}
+  </div>
 
-    <!-- End Document
+  {% include 'footer.html' %}
+
+  <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 

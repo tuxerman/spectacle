@@ -23,6 +23,20 @@ def www_show_home():
     )
 
 
+@application.errorhandler(404)
+def page_not_found(e):
+    return render_template(
+        '404.html',
+        user_info=get_current_user_info()), 404
+
+
+@application.errorhandler(500)
+def we_broke_it(e):
+    return render_template(
+        '500.html',
+        user_info=get_current_user_info()), 500
+
+
 @application.route('/about', methods=['GET'])
 def www_show_about():
     return render_template(
