@@ -2,16 +2,18 @@
 """
 The Document class and associated globals
 """
-
 from collections import namedtuple
 
 from spectacle.document.model import db_get_document_by_id
 from spectacle.document.model import db_add_document
 from spectacle.document.model import db_edit_document
 from spectacle.document.model import db_publish_document
-from spectacle.document.model import db_get_all_unpublished_doc_ids
+from spectacle.document.model import db_get_all_docs_fetched
+from spectacle.document.model import db_get_all_docs_submitted
 from spectacle.document.model import db_get_documents_published_by_user
 from spectacle.document.model import db_get_documents_submitted_by_user
+from spectacle.document.model import db_set_state
+from spectacle.document.model import DocState
 
 
 class Document(namedtuple(
@@ -25,7 +27,7 @@ class Document(namedtuple(
         'source',
         'date_added',
         'date_published',
-        'published'
+        'state'
     ]
 )):
     pass
@@ -43,14 +45,14 @@ def get_document(doc_id):
                         source=doc.source,
                         date_added=doc.date_added,
                         date_published=doc.date_published,
-                        published=doc.published,
+                        state=doc.state,
                         )
     return None
 
 
 def get_published_document(doc_id):
     doc = db_get_document_by_id(doc_id)
-    if doc and doc.published:
+    if doc and doc.state == DocState.published:
         return Document(id=doc.id,
                         title=doc.title,
                         topic_id=doc.topic_id,
@@ -60,13 +62,17 @@ def get_published_document(doc_id):
                         source=doc.source,
                         date_added=doc.date_added,
                         date_published=doc.date_published,
-                        published=doc.published,
+                        state=doc.state,
                         )
     return None
 
 
-def get_all_unpublished_doc_ids():
-    return db_get_all_unpublished_doc_ids()
+def get_all_doc_ids_fetched():
+    return [doc.id for doc in db_get_all_docs_fetched()]
+
+
+def get_all_doc_ids_submitted():
+    return [doc.id for doc in db_get_all_docs_submitted()]
 
 
 def add_document(title, topic_id, content, summary, original_url, source, user_id=None):
@@ -96,3 +102,11 @@ def get_published_document_ids_by_user(user_id):
         doc.id
         for doc in db_get_documents_published_by_user(user_id)
     ]
+
+
+def mark_doc_as_fetched(doc_id):
+    db_set_state(doc_id, DocState.fetched)
+
+
+def mark_doc_as_discarded(doc_id):
+    db_set_state(doc_id, DocState.discarded)

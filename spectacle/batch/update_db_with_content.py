@@ -7,9 +7,11 @@ import os
 import urllib
 
 import config
+from spectacle.database_definitions import CURRENT_DATABASE
 from spectacle.document.logic import edit_document
-from spectacle.document.logic import get_all_unpublished_doc_ids
+from spectacle.document.logic import get_all_doc_ids_submitted
 from spectacle.document.logic import get_document
+from spectacle.document.logic import mark_doc_as_fetched
 
 
 DOWNLOAD_DIR = "static/pdf/"
@@ -52,7 +54,7 @@ def extract_text_from_doc(filename):
 
 
 def main():
-    for doc_id in get_all_unpublished_doc_ids():
+    for doc_id in get_all_doc_ids_submitted():
         doc = get_document(doc_id)
         if doc.content:
             print 'Skipping id: {}, title: ({})'.format(doc.id, doc.title)
@@ -61,15 +63,21 @@ def main():
         print 'Processing id: {}, title: {}'.format(doc.id, doc.title)
         downloaded_file_path = download_file(doc.original_url, '{}.pdf'.format(doc_id))
         upload_to_s3(_get_s3_connection(), '{}.pdf'.format(doc_id), downloaded_file_path)
-        edit_document(
-            doc_id=doc.id,
-            title=doc.title,
-            topic_id=doc.topic_id,
-            content=extract_text_from_doc(downloaded_file_path),
-            summary=doc.summary,
-            original_url=doc.original_url,
-            source=doc.source
-        )
+        _update_document_with_content(doc, extract_text_from_doc(downloaded_file_path))
+
+
+@CURRENT_DATABASE.atomic()
+def _update_document_with_content(doc, content):
+    edit_document(
+        doc_id=doc.id,
+        title=doc.title,
+        topic_id=doc.topic_id,
+        content=content,
+        summary=doc.summary,
+        original_url=doc.original_url,
+        source=doc.source
+    )
+    mark_doc_as_fetched(doc.id)
 
 
 if __name__ == '__main__':

@@ -2,11 +2,18 @@
 """
 ORM and data functions for Document
 """
-from peewee import CharField, DateTimeField, TextField, IntegerField, BooleanField, ForeignKeyField
+from peewee import CharField, DateTimeField, TextField, IntegerField, ForeignKeyField
 from datetime import datetime
 
 from spectacle.database_definitions import CURRENT_BASE_MODEL
 from spectacle.full_text_search.model import db_index_document
+
+
+class DocState:
+    submitted = 0
+    fetched = 1
+    discarded = 2
+    published = 3
 
 
 class Document(CURRENT_BASE_MODEL):
@@ -18,7 +25,7 @@ class Document(CURRENT_BASE_MODEL):
     source = CharField()
     date_added = DateTimeField()
     date_published = DateTimeField()
-    published = BooleanField()
+    state = IntegerField()
 
     class Meta:
         order_by = ('id',)
@@ -44,19 +51,28 @@ def db_get_document_by_id(doc_id):
     return Document.get(Document.id == doc_id)
 
 
-def db_get_all_unpublished_doc_ids():
+def db_get_all_docs_fetched():
     return [
-        doc.id
+        doc
         for doc in Document.select().where(
-            Document.published == False
+            Document.state == DocState.fetched
+        ).order_by(Document.date_added.desc())
+    ]
+
+
+def db_get_all_docs_submitted():
+    return [
+        doc
+        for doc in Document.select().where(
+            Document.state == DocState.submitted
         ).order_by(Document.date_added.desc())
     ]
 
 
 def db_publish_document(doc_id, user_id=None):
     doc = Document.get(Document.id == doc_id)
-    already_published = doc.published
-    doc.published = True
+    already_published = (doc.state == DocState.published)
+    doc.state = DocState.published
     doc.date_published = datetime.now()
     doc.save()
     # TODO: what if we pull it down to make changes and have to reindex this?
@@ -78,7 +94,7 @@ def db_add_document(title, topic_id, content, summary, original_url, source, use
         source=source,
         date_added=datetime.now(),
         date_published=datetime(2000, 01, 01, 00, 00, 00),
-        published=False,
+        state=DocState.submitted,
     )
     SubmittedDocument.create(
         user_id=user_id or 'Anon',
@@ -112,3 +128,11 @@ def db_get_documents_published_by_user(user_id):
         doc
         for doc in PublishedDocument.select().where(PublishedDocument.user_id == user_id)
     ]
+
+
+def db_set_state(doc_id, state):
+    doc = Document.get(Document.id == doc_id)
+    if not doc:
+        return None
+    doc.state = state
+    doc.save()

@@ -12,6 +12,7 @@ from boto.s3.connection import S3Connection
 import boto
 from spectacle.database_definitions import CURRENT_DATABASE
 import spectacle.document.logic as document_logic
+import spectacle.document.model as document_model
 from spectacle.user.utils import moderators_only, get_current_user_info
 
 
@@ -76,7 +77,7 @@ def www_show_review_dashboard():
 
     docs_to_review = [
         doc_review_data(document_logic.get_document(doc_id))
-        for doc_id in document_logic.get_all_unpublished_doc_ids()
+        for doc_id in document_logic.get_all_doc_ids_fetched()
     ]
     return render_template(
         'review_dashboard.html',
@@ -96,7 +97,7 @@ def www_show_user_dashboard():
             'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
             'date_published': (
                 doc.date_published.strftime("%d %b %Y, %H:%M")
-                if doc.published else 'Pending'
+                if doc.state == document_model.DocState.published else 'Pending'
             ),
             'source': doc.source
         }
@@ -135,6 +136,7 @@ def www_view_document(docid):
             'summary': doc.summary,
             'original_url': doc.original_url,
             'date_added': doc.date_added.strftime("%d %b %Y, %H:%M"),
+            'date_published': doc.date_published.strftime("%d %b %Y, %H:%M"),
             'url': 'https://s3.amazonaws.com/{}/{}.pdf'.format(config.S3_PDF_BUCKET, doc.id),
             'source': doc.source
         }

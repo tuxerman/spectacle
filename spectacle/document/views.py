@@ -3,10 +3,12 @@
 Document views
 """
 from flask import jsonify, request
+from flask_login import login_required
 import spectacle.document.logic as document_logic
 from application import application
 from spectacle.user.utils import get_current_user_info
 from spectacle.database_definitions import CURRENT_DATABASE
+from spectacle.user.utils import moderators_only
 
 
 @application.route('/document/submit', methods=['POST'])
@@ -27,6 +29,8 @@ def submit_document():
 
 
 @application.route('/document/publish/<int:docid>', methods=['POST'])
+@login_required
+@moderators_only
 @CURRENT_DATABASE.atomic()
 def publish_document(docid):
     user_info = get_current_user_info()
@@ -41,4 +45,13 @@ def publish_document(docid):
         source=doc_data['source']
     )
     document_logic.publish_document(docid, user_id=user_info['username'])
+    return jsonify({'success': True})
+
+
+@application.route('/document/discard/<int:docid>', methods=['POST'])
+@login_required
+@moderators_only
+@CURRENT_DATABASE.atomic()
+def discard_submitted_document(docid):
+    document_logic.mark_doc_as_discarded(docid)
     return jsonify({'success': True})
