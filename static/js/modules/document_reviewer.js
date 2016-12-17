@@ -17,16 +17,14 @@ DocumentReviewer = (function(){
             settings.discardURL = '/document/discard/' + globalDocId;
             settings.statusBox = $("#status_bar");
 
-            settings.titleBox.focus();
             this.bindUIActions();
         },
         discardFunction: function () {
-            $.post(settings.discardURL, function(data) {
-                console.log('discard successful');
-                setTimeout(function() {
+            if (confirm("Are you sure you want to discard this document?") == true) {
+                $.post(settings.discardURL, function(data) {
                     window.location.href = '/review';
-                }, 5000);
-            });
+                });
+            }
         },
         publishFunction: function (editedDocInfo) {
             $.post(settings.postURL, data=editedDocInfo, function(data) {
