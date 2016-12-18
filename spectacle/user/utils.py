@@ -10,7 +10,7 @@ from flask import redirect
 
 
 def get_current_user_info():
-    user_info = {'logged_in': False, 'user_id': None, 'is_moderator': False}
+    user_info = {'logged_in': False, 'username': None, 'is_moderator': False}
     if current_user.is_authenticated:
         user_info['username'] = current_user.username
         user_info['logged_in'] = True

@@ -2,30 +2,46 @@
 """
 Document views
 """
+import json
+import urllib2
 from flask import jsonify, request
 from flask_login import login_required
+
 import spectacle.document.logic as document_logic
 from application import application
-from spectacle.user.utils import get_current_user_info
+from config import RECAPTCHA_SECRET_KEY
 from spectacle.database_definitions import CURRENT_DATABASE
+from spectacle.user.utils import get_current_user_info
 from spectacle.user.utils import moderators_only
 
 
 @application.route('/document/submit', methods=['POST'])
-@CURRENT_DATABASE.atomic()
 def submit_document():
     user_info = get_current_user_info()
     doc_data = request.form
+
+    # if not logged in, check bad captcha
+    if not user_info['logged_in'] and not _verify_recaptcha(doc_data.get('g_recaptcha_response')):
+        return jsonify({'id': None})
+
+    # successful POSTs
+    return jsonify(_add_document(
+        doc_data['title'], doc_data['summary'], doc_data['original_url'], doc_data['source'], user_info.get('username')
+    ))
+
+
+@CURRENT_DATABASE.atomic()
+def _add_document(title, summary, original_url, source, user_id):
     new_doc_id = document_logic.add_document(
-        title=doc_data['title'],
+        title=title,
         topic_id=-1,
-        content='',  # content
-        summary=doc_data['summary'],
-        original_url=doc_data['original_url'],
-        source=doc_data['source'],
-        user_id=user_info.get('username')
+        content='',
+        summary=summary,
+        original_url=original_url,
+        source=source,
+        user_id=user_id,
     )
-    return jsonify({'id': new_doc_id})
+    return {'id': new_doc_id}
 
 
 @application.route('/document/publish/<int:docid>', methods=['POST'])
@@ -55,3 +71,15 @@ def publish_document(docid):
 def discard_submitted_document(docid):
     document_logic.mark_doc_as_discarded(docid)
     return jsonify({'success': True})
+
+
+def _verify_recaptcha(g_recaptcha_response):
+    if not g_recaptcha_response:
+        return False
+
+    url = "https://www.google.com/recaptcha/api/siteverify?secret={}&response={}".format(
+        RECAPTCHA_SECRET_KEY, g_recaptcha_response
+    )
+
+    g_result = json.loads(urllib2.urlopen(url).read())
+    return g_result['success']

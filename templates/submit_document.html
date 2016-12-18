@@ -26,6 +26,7 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="{{ url_for('static', filename='js/modules/document_submitter.js') }}"></script>
   <script>
     $(document).ready(function() {
@@ -52,9 +53,6 @@
         <h5>Thanks!</h5>
         <p>The document has been added to our database, and will be available as soon as it has been reviewed and published.</p>
       </div>
-      <!-- <div class="two columns">
-        <button class="button" id="dismiss_status_bar_button">OK</button>
-      </div> -->
     </div>
 
     <div class="row" style="margin-top: 1rem">
@@ -96,6 +94,15 @@
         <p class="form-validation-error" id="form_source_validation"></p>
       </div>
     </div>
+
+    {% if not user_info['logged_in'] %}
+    <div class="row" style="margin-top: 1rem">
+        <div class="twelve columns" style="margin-top: 1rem">
+            Please tick the box below. This helps us distinguish you from automatic scripts.
+            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+        </div>
+    </div>
+    {% endif %}
 
     <div class="row" style="margin-top: 2rem">
       <div class="three columns"style="margin-top: 1rem">

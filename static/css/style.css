@@ -16,8 +16,13 @@ body {
     box-sizing: inherit;
 }
 
-.container {
-    /*padding-top: 18px;*/
+
+.main-container {
+    margin-top: 2rem;
+}
+
+.short-container {
+    margin-top: 5%;
 }
 
 .homepage-feature {
@@ -48,8 +53,7 @@ body {
 }
 
 .nav-button:hover {
-    /*color: #FF5722;*/
-    background-color: #EAEAEA;
+    background-color: #757575;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     cursor: pointer;
     cursor: hand;
@@ -62,7 +66,7 @@ body {
 
 .document-navigator {
     padding: 20px;
-    border: 1px solid #F4F4F4;
+    border: 1px solid #3A3A3A;
 }
 
 #logo h2 {
@@ -116,7 +120,7 @@ body {
 }
 
 #footer {
-    background-color: #F8F8F8;
+    background-color: #F4F4F4;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -126,6 +130,7 @@ body {
 }
 
 header {
-    background-color: #F8F8F8;
+    background-color: #3A3A3A;
     border-bottom: 1px solid #EAEAEA;
+    color: #FFF;
 }

@@ -55,6 +55,7 @@ DocumentSubmitter = (function(){
         },
 
         submitDoc: function (newDocInfo, validatorFunc) {
+            newDocInfo['g_recaptcha_response'] = $('#g-recaptcha-response').val();
             validation = validatorFunc();
             if (validation == true) {
                 $.post(settings.postURL, data=newDocInfo, function(data) {
@@ -87,7 +88,7 @@ DocumentSubmitter = (function(){
                     title: settings.formElements.title.val(),
                     summary: settings.formElements.summary.val(),
                     original_url: settings.formElements.originalUrl.val(),
-                    source: settings.formElements.source.val()
+                    source: settings.formElements.source.val(),
                 };
                 submitDoc(newDocInfo, validatorFunc);
             });
