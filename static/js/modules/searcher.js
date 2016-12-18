@@ -41,7 +41,9 @@ Searcher = (function() {
         bindUIActions: function() {
             searchFunction = this.doSearch;
             settings.searchButton.click(function(e) {
-                searchFunction(settings.searchBox.val());
+                if (settings.searchBox.val()) {
+                    searchFunction(settings.searchBox.val());
+                }
             });
             settings.searchBox.on('keydown', function(e) {
                 if (e.keyCode == 13)
