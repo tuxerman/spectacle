@@ -3,6 +3,7 @@
 WWW views
 """
 from application import application
+from config import RECAPTCHA_SITE_KEY
 from flask import render_template
 from flask import abort
 from flask import Response
@@ -57,6 +58,7 @@ def www_show_register():
 def www_show_submit():
     return render_template(
         'submit_document.html',
+        recaptcha_site_key=RECAPTCHA_SITE_KEY,
         user_info=get_current_user_info())
 
 

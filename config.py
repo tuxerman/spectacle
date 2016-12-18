@@ -31,4 +31,8 @@ ES_INDEX = 'spectacle_fts_index_dev'
 # S3 credentials
 S3_ACCESS_KEY = os.environ.get('S3_ACCESS_KEY')
 S3_SECRET_KEY = os.environ.get('S3_SECRET_KEY')
-S3_PDF_BUCKET = 'spectacle-storage-dev'
+S3_PDF_BUCKET = 'spectacle-storage-dev1'
+
+# Google recaptcha
+RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY')

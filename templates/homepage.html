@@ -40,13 +40,12 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {% include 'header.html' %}
-  <div class="container" style="margin-top: 1rem">
+  <div class="container main-container">
     <div class="row" id="hero" style="margin-top: 5%">
       <div class="two columns" style="margin-top: 1rem"></div>
       <div class="eight columns">
         <h3>Search, submit, download</h3>
         <h5>A fast and simple library for public documents</h5>
-        <!-- <img class="u-max-full-width" src="{{ url_for('static', filename='img/spectacle-logo.svg') }}"> -->
       </div>
       <div class="two columns" style="margin-top: 1rem"></div>
     </div>
@@ -85,6 +84,12 @@
         <h4><i class="fa fa-info-circle" aria-hidden="true"></i></h4>
         <h4>About</h4>
         <p>What Spectacle is, and aims to be</p>
+      </div>
+
+      <div class="one-third column homepage-feature" onclick="location.href='/register';">
+        <h4><i class="fa fa-user-plus" aria-hidden="true"></i></i></h4>
+        <h4>Register</h4>
+        <p>Sign up for free and start contributing</p>
       </div>
       {% endif %}
 
