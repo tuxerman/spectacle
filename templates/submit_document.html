@@ -45,6 +45,7 @@
     <div class="row">
       <div class="twelve columns">
         <h3>Submit document</h3>
+        <p>Have a paper copy or a document saved on disk? <a href="/faq#offline-documents">Here are some alternatives</a> until we add more features.</p>
       </div>
     </div>
 
@@ -58,7 +59,7 @@
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_title">Title</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_title">
+        <input class="u-full-width" type="text" placeholder="Example: 'Details of budget allocation at Sample Public Organisation'" id="form_title">
       </div>
       <div class="four columns"style="margin-top: 1rem">
         <p class="form-validation-error" id="form_title_validation"></p>
@@ -68,7 +69,7 @@
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_summary">Summary</label>
-        <textarea class="u-full-width" placeholder="" id="form_summary" rows="5"></textarea>
+        <textarea class="u-full-width" placeholder="Please provide a short summary that is descriptive enough to capture the essential details of the document you are submitting" id="form_summary" rows="5"></textarea>
       </div>
       <div class="four columns"style="margin-top: 1rem">
         <p class="form-validation-error" id="form_summary_validation"></p>
@@ -78,7 +79,7 @@
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_original_url">Original URL</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_original_url">
+        <input class="u-full-width" type="text" placeholder="Include the link to the document here" id="form_original_url">
       </div>
       <div class="four columns"style="margin-top: 1rem">
         <p class="form-validation-error" id="form_original_url_validation"></p>
@@ -88,7 +89,7 @@
     <div class="row" style="margin-top: 1rem">
       <div class="eight columns"style="margin-top: 1rem">
         <label for="form_source">Source</label>
-        <input class="u-full-width" type="text" placeholder="" id="form_source">
+        <input class="u-full-width" type="text" placeholder="Example: 'Ministry of Telecom', 'Personally filed RTI', etc" id="form_source">
       </div>
       <div class="four columns"style="margin-top: 1rem">
         <p class="form-validation-error" id="form_source_validation"></p>
@@ -98,7 +99,7 @@
     {% if not user_info['logged_in'] %}
     <div class="row" style="margin-top: 1rem">
         <div class="twelve columns" style="margin-top: 1rem">
-            Please tick the box below. This helps us distinguish you from automatic scripts.
+            <p>Please tick the box below. This helps us keep away automatic scripts that could abuse this feature.</p>
             <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
         </div>
     </div>

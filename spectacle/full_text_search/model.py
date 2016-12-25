@@ -80,7 +80,7 @@ def db_search_documents(query_string, page_size, start_page):
         'hits': num_results,
         'results': [
             {
-                'doc_id': result['_id'],
+                'doc_id': result['_source']['doc_id'],
                 'title': result['_source']['title'],
                 'snippet': (
                     _get_highlight_from_result(result) or

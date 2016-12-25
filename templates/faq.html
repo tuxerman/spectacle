@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Spectacle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/skeleton.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</head>
+
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {% include 'header.html' %}
+
+  <div class="container main-container">
+
+    <div class="row">
+      <div class="twelve columns">
+        <h3>Frequently Asked Questions</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 2rem">
+        <h4 id="offline-documents" style="margin-top: 1rem">The document I want to submit is not online</h4>
+        <p>
+          We'll support uploading documents from your computer soon. <br/>
+          Meanwhile, if you have a paper copy, scan the document (or take a clear photo of it) and send it to
+          <b>submit [at] spectaclearchive [dotcom]</b>. <br/>
+          Please make sure you include the same details required for online submissions (Title, Summary, Source) in the email.
+        </p>
+
+        <h4 id="more-questions" style="margin-top: 1rem">Something else</h4>
+        <p>Please send an email to <strong>contact [at] spectaclearchive [dotcom]</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+  {% include 'footer.html' %}
+
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>
