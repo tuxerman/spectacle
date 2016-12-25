@@ -26,14 +26,14 @@ def www_show_home():
 
 
 @application.errorhandler(404)
-def page_not_found(e):
+def www_page_not_found(e):
     return render_template(
         '404.html',
         user_info=get_current_user_info()), 404
 
 
 @application.errorhandler(500)
-def we_broke_it(e):
+def www_we_broke_it(e):
     return render_template(
         '500.html',
         user_info=get_current_user_info()), 500
@@ -43,6 +43,14 @@ def we_broke_it(e):
 def www_show_about():
     return render_template(
         'about.html',
+        user_info=get_current_user_info()
+    )
+
+
+@application.route('/faq', methods=['GET'])
+def www_show_faq():
+    return render_template(
+        'faq.html',
         user_info=get_current_user_info()
     )
 
